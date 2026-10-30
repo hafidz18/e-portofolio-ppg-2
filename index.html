@@ -1,0 +1,4319 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset=utf8>
+  <meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <style>
+    :root {
+      color-scheme: light;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px)
+    }
+
+    html {
+      scroll-padding-top: env(safe-area-inset-top, 0px)
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font: 14px -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fff;
+      color: #000
+    }
+
+    img {
+      max-width: 100%
+    }
+
+    [hidden]:not([hidden=until-found i]) {
+      display: none !important
+    }
+  </style>
+</head>
+
+<body>
+  <title>E-Portfolio Hafidz Ruzaini</title>
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    /* Konsep: struktur portofolio semester 1 (hero berfoto, sidebar profil, pita akordion biru dan emas, pita gelap),
+   palet jernih biru kobalt, biru langit, madu. Disusun mengikuti rubrik UTS/UAS PPL Mandiri:
+   Beranda (pengantar, profil, kontak), Artefak, Analisis Artefak, Refleksi, Tata Bahasa. Ikon memakai SVG inline. */
+    :root {
+      --bg: #f3f8ff;
+      --bg-alt: #e7f0ff;
+      --card: #ffffff;
+      --tint: #eaf2ff;
+      --ink: #0a2247;
+      --text: #3f5b80;
+      --muted: #55708f;
+      --line: #d5e3f8;
+      --blue: #1f5fe0;
+      --blue-2: #2d6df0;
+      --sky: #38bdf8;
+      --honey: #ffc145;
+      --honey-2: #ffd980;
+      --honey-ink: #8a5a00;
+      --mint: #14b886;
+      --plus: #0b7a55;
+      --plus-bg: #e3f6ee;
+      --minus: #c03636;
+      --minus-bg: #fdebeb;
+      --band: #0a2257;
+      --on-band-muted: #a9bddd;
+      --nav-bg: rgba(10, 34, 87, .88);
+      --grad-hero: linear-gradient(135deg, #0a2257 0%, #1f5fe0 58%, #38bdf8 100%);
+      --grad-card: linear-gradient(150deg, #1f5fe0, #0a2e8a);
+      --grad-sec: linear-gradient(135deg, #1f5fe0, #2d6df0);
+      --grad-honey: linear-gradient(135deg, #ffc145, #ffd980);
+      --band-blue: linear-gradient(135deg, #0a1f5c, #12308f 55%, #1f5fe0);
+      --band-honey: linear-gradient(135deg, #ffd980, #ffc145 55%, #f2a91c);
+      --shadow-sm: 0 2px 12px rgba(10, 34, 71, .07);
+      --shadow-md: 0 8px 30px rgba(10, 34, 71, .12);
+      --shadow-lg: 0 18px 50px rgba(10, 34, 71, .16);
+      --todo: #8a5a00;
+      --todo-bg: #fff3d3;
+      --sun: block;
+      --moon: none;
+      --knob: 4px;
+      --font-display: "DM Serif Display", Georgia, "Times New Roman", serif;
+      --font-body: "Nunito", "Segoe UI", system-ui, sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #060e1e;
+        --bg-alt: #091426;
+        --card: #0e1d38;
+        --tint: #0f2347;
+        --ink: #e8f1ff;
+        --text: #a9bedd;
+        --muted: #7e97ba;
+        --line: #1c355e;
+        --blue: #6ab7ff;
+        --honey-ink: #ffd980;
+        --plus: #4ade9f;
+        --plus-bg: #0d2c24;
+        --minus: #ff8f8f;
+        --minus-bg: #3a1618;
+        --band: #030a1a;
+        --nav-bg: rgba(3, 10, 26, .92);
+        --grad-hero: linear-gradient(135deg, #040c20 0%, #0d3a9c 58%, #1d8fc4 100%);
+        --shadow-sm: 0 2px 12px rgba(0, 0, 0, .35);
+        --shadow-md: 0 8px 30px rgba(0, 0, 0, .45);
+        --shadow-lg: 0 18px 50px rgba(0, 0, 0, .55);
+        --todo: #f0c36a;
+        --todo-bg: #33270d;
+        --sun: none;
+        --moon: block;
+        --knob: 28px;
+        color-scheme: dark;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #060e1e;
+      --bg-alt: #091426;
+      --card: #0e1d38;
+      --tint: #0f2347;
+      --ink: #e8f1ff;
+      --text: #a9bedd;
+      --muted: #7e97ba;
+      --line: #1c355e;
+      --blue: #6ab7ff;
+      --honey-ink: #ffd980;
+      --plus: #4ade9f;
+      --plus-bg: #0d2c24;
+      --minus: #ff8f8f;
+      --minus-bg: #3a1618;
+      --band: #030a1a;
+      --nav-bg: rgba(3, 10, 26, .92);
+      --grad-hero: linear-gradient(135deg, #040c20 0%, #0d3a9c 58%, #1d8fc4 100%);
+      --shadow-sm: 0 2px 12px rgba(0, 0, 0, .35);
+      --shadow-md: 0 8px 30px rgba(0, 0, 0, .45);
+      --shadow-lg: 0 18px 50px rgba(0, 0, 0, .55);
+      --todo: #f0c36a;
+      --todo-bg: #33270d;
+      --sun: none;
+      --moon: block;
+      --knob: 28px;
+      color-scheme: dark;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      color: var(--blue);
+      text-underline-offset: 3px;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    .ph:focus-visible,
+    .slot:focus-visible {
+      outline: 2px solid var(--honey);
+      outline-offset: 3px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: 0;
+      font-weight: 400;
+      text-wrap: balance;
+      color: var(--ink);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--font-display);
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    svg.ic {
+      width: 1.1em;
+      height: 1.1em;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex: none;
+    }
+
+    .todo {
+      background: var(--todo-bg);
+      color: var(--todo);
+      border-radius: 6px;
+      padding: .08rem .45rem;
+      font-size: .86rem;
+      font-weight: 700;
+    }
+
+    .sec {
+      padding: 4.5rem max(1rem, 5%);
+    }
+
+    .sec.alt {
+      background: var(--bg-alt);
+    }
+
+    .sec-in {
+      max-width: 1140px;
+      margin-inline: auto;
+      display: grid;
+      gap: 2rem;
+    }
+
+    .sec-head {
+      display: grid;
+      gap: .7rem;
+      max-width: 66ch;
+      justify-items: start;
+    }
+
+    .sec-tag {
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+    }
+
+    .tg {
+      display: inline-grid;
+      place-items: center;
+      width: 1.8rem;
+      height: 1.8rem;
+      border-radius: 9px;
+      background: var(--grad-honey);
+      color: #0a2247;
+      flex: none;
+    }
+
+    .tg svg {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .sec-h {
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      line-height: 1.12;
+    }
+
+    .sec-h em {
+      color: var(--blue);
+    }
+
+    .sec-desc {
+      font-size: .95rem;
+    }
+
+    .ico {
+      display: grid;
+      place-items: center;
+      flex: none;
+      width: 2.7rem;
+      height: 2.7rem;
+      border-radius: 13px;
+      background: var(--tint);
+      color: var(--blue);
+    }
+
+    .ico svg {
+      width: 1.35rem;
+      height: 1.35rem;
+    }
+
+    .ico.sm {
+      width: 2.1rem;
+      height: 2.1rem;
+      border-radius: 10px;
+    }
+
+    .ico.sm svg {
+      width: 1.1rem;
+      height: 1.1rem;
+    }
+
+    .ico.honey {
+      background: rgba(255, 193, 69, .22);
+      color: var(--honey-ink);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1.5px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow-sm);
+      min-width: 0;
+    }
+
+    .lift {
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+
+    .lift:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--blue-2);
+    }
+
+    /* Navigasi */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(106, 183, 255, .25);
+      padding: env(safe-area-inset-top, 0px) max(1rem, 5%) 0;
+    }
+
+    .nav-in {
+      max-width: 1140px;
+      margin-inline: auto;
+      height: 66px;
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+    }
+
+    .nav-title {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      margin-right: auto;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: #fff;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .logo {
+      position: relative;
+      overflow: hidden;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--grad-honey);
+      display: grid;
+      place-items: center;
+      color: #0a2247;
+      font-size: 1.1rem;
+      flex: none;
+    }
+
+    .logo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: var(--grad-honey);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: .1rem;
+    }
+
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      color: rgba(255, 255, 255, .78);
+      text-decoration: none;
+      font-size: .8rem;
+      font-weight: 700;
+      padding: .4rem .8rem;
+      border-radius: 99px;
+      white-space: nowrap;
+    }
+
+    .nav-links a svg {
+      width: .95rem;
+      height: .95rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.on {
+      background: rgba(255, 255, 255, .13);
+      color: #fff;
+    }
+
+    .toggle {
+      width: 52px;
+      height: 28px;
+      border-radius: 99px;
+      border: 1px solid rgba(255, 255, 255, .28);
+      background: rgba(255, 255, 255, .1);
+      position: relative;
+      cursor: pointer;
+      padding: 0;
+      flex: none;
+    }
+
+    .knob {
+      position: absolute;
+      top: 3px;
+      left: var(--knob);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--honey);
+      display: grid;
+      place-items: center;
+      transition: left .25s;
+      color: #0a2247;
+    }
+
+    .knob .sun {
+      display: var(--sun);
+    }
+
+    .knob .moon {
+      display: var(--moon);
+    }
+
+    .knob svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .burger {
+      display: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, .28);
+      background: rgba(255, 255, 255, .08);
+      color: #fff;
+      cursor: pointer;
+      place-items: center;
+      padding: 0;
+    }
+
+    .burger svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    @media (max-width: 1060px) {
+      .burger {
+        display: grid;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(66px + env(safe-area-inset-top, 0px));
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: #081c4c;
+        padding: .75rem max(1rem, 5%) 1.1rem;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: .7rem 1rem;
+        font-size: .9rem;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      color: #fff;
+      padding: calc(66px + 4.5rem) max(1rem, 5%) 4.5rem;
+    }
+
+    .slides,
+    .hero-overlay,
+    .hero-geo {
+      position: absolute;
+      inset: 0;
+    }
+
+    .slides {
+      z-index: -3;
+    }
+
+    .hero-overlay {
+      z-index: -2;
+      background: linear-gradient(135deg, rgba(10, 34, 87, .84), rgba(16, 62, 170, .64) 55%, rgba(56, 189, 248, .3));
+    }
+
+    .hero-geo {
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .hero-geo::before,
+    .hero-geo::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255, 255, 255, .14);
+    }
+
+    .hero-geo::before {
+      width: 600px;
+      height: 600px;
+      right: -160px;
+      top: -180px;
+    }
+
+    .hero-geo::after {
+      width: 300px;
+      height: 300px;
+      left: -90px;
+      bottom: -110px;
+      border-color: rgba(255, 193, 69, .3);
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.4s;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+    }
+
+    /* Nama file sama dengan e-portofolio semester 1 */
+    .s1 {
+      background-image: url("assets/mengajar1.jpg"), radial-gradient(circle at 18% 28%, rgba(56, 189, 248, .4), transparent 55%), var(--grad-hero);
+    }
+
+    .s2 {
+      background-image: url("assets/presentasi.jpg"), radial-gradient(circle at 80% 24%, rgba(255, 193, 69, .22), transparent 55%), var(--grad-hero);
+    }
+
+    .s3 {
+      background-image: url("assets/mengajar2.jpg"), radial-gradient(circle at 70% 80%, rgba(56, 189, 248, .4), transparent 55%), var(--grad-hero);
+    }
+
+    .s4 {
+      background-image: url("assets/mengajar3.jpg"), radial-gradient(circle at 25% 75%, rgba(255, 193, 69, .22), transparent 55%), var(--grad-hero);
+    }
+
+    .s5 {
+      background-image: url("assets/mengajar4.jpg"), radial-gradient(circle at 75% 25%, rgba(56, 189, 248, .4), transparent 55%), var(--grad-hero);
+    }
+
+    .hero-in {
+      max-width: 1140px;
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 4rem;
+      align-items: center;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-in {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+        justify-items: center;
+      }
+
+      .hero-sub {
+        margin-inline: auto;
+      }
+
+      .hero-quote {
+        text-align: left;
+      }
+
+      .cta,
+      .hstats {
+        justify-content: center;
+      }
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      background: var(--honey);
+      color: #0a2247;
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .35rem .95rem;
+      border-radius: 99px;
+    }
+
+    .badge i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #0a2247;
+      animation: blink 1.6s infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: .25;
+      }
+    }
+
+    .hero-name {
+      color: #fff;
+      font-size: clamp(2.7rem, 6.2vw, 4.5rem);
+      line-height: 1.02;
+      margin-block: 1.1rem .9rem;
+    }
+
+    .hero-name em {
+      color: var(--honey-2);
+    }
+
+    .hero-sub {
+      color: rgba(255, 255, 255, .86);
+      max-width: 50ch;
+      font-size: 1.02rem;
+    }
+
+    .hero-quote {
+      margin: 1.5rem 0 0;
+      border-left: 3px solid var(--honey);
+      padding: .15rem 0 .15rem 1.1rem;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.2rem;
+      line-height: 1.4;
+      max-width: 38ch;
+      color: #fff;
+    }
+
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-top: 1.9rem;
+    }
+
+    .btn-gold,
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: .85rem;
+      padding: .8rem 1.6rem;
+      border-radius: 99px;
+      transition: transform .2s;
+    }
+
+    .btn-gold {
+      background: var(--grad-honey);
+      color: #0a2247;
+      box-shadow: 0 4px 24px rgba(255, 193, 69, .4);
+    }
+
+    .btn-ghost {
+      border: 1.5px solid rgba(255, 255, 255, .4);
+      color: #fff;
+    }
+
+    .btn-gold:hover,
+    .btn-ghost:hover {
+      transform: translateY(-2px);
+    }
+
+    .hstats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-top: 2rem;
+    }
+
+    .hstat {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      background: rgba(255, 255, 255, .09);
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 14px;
+      padding: .65rem 1.1rem .65rem .8rem;
+      text-align: left;
+    }
+
+    .hstat .si {
+      display: grid;
+      place-items: center;
+      width: 2.3rem;
+      height: 2.3rem;
+      border-radius: 11px;
+      background: rgba(255, 255, 255, .12);
+      color: var(--honey-2);
+      flex: none;
+    }
+
+    .hstat .si svg {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+
+    .hstat b {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.7rem;
+      line-height: 1.05;
+      color: var(--honey-2);
+    }
+
+    .hstat span.t {
+      font-size: .74rem;
+      color: rgba(255, 255, 255, .82);
+      line-height: 1.25;
+      display: block;
+    }
+
+    .photo-area {
+      display: grid;
+      justify-items: center;
+      padding: 2rem;
+    }
+
+    .photo-wrap {
+      position: relative;
+      width: min(100%, 270px);
+      aspect-ratio: 1;
+    }
+
+    .photo-frame {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      padding: 5px;
+      background: conic-gradient(from 140deg, var(--honey), #fff, var(--sky), #fff, var(--honey));
+      box-shadow: 0 0 0 4px rgba(56, 189, 248, .3), var(--shadow-lg);
+    }
+
+    .ring1,
+    .ring2 {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .ring1 {
+      inset: -14px;
+      border: 1.5px dashed rgba(255, 193, 69, .75);
+      animation: spin 18s linear infinite;
+    }
+
+    .ring2 {
+      inset: -28px;
+      border: 1.5px solid rgba(138, 200, 255, .5);
+      animation: spin 30s linear infinite reverse;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .cap {
+      position: absolute;
+      left: 50%;
+      bottom: -16px;
+      transform: translateX(-50%);
+      background: var(--grad-honey);
+      color: #0a2247;
+      font-weight: 800;
+      font-size: .78rem;
+      padding: .3rem 1.1rem;
+      border-radius: 99px;
+      white-space: nowrap;
+      box-shadow: var(--shadow-md);
+    }
+
+    .dots {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 1.4rem;
+      display: flex;
+      justify-content: center;
+      gap: .5rem;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 99px;
+      border: 0;
+      padding: 0;
+      background: rgba(255, 255, 255, .45);
+      cursor: pointer;
+      transition: width .3s, background .3s;
+    }
+
+    .dot.active {
+      width: 24px;
+      background: var(--honey);
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .hero-text>* {
+      animation: rise .7s cubic-bezier(.2, .7, .2, 1) backwards;
+    }
+
+    .hero-text>*:nth-child(2) {
+      animation-delay: .08s;
+    }
+
+    .hero-text>*:nth-child(3) {
+      animation-delay: .16s;
+    }
+
+    .hero-text>*:nth-child(4) {
+      animation-delay: .24s;
+    }
+
+    .hero-text>*:nth-child(5) {
+      animation-delay: .32s;
+    }
+
+    .hero-text>*:nth-child(6) {
+      animation-delay: .4s;
+    }
+
+    /* Slot foto */
+    .slot {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: var(--grad-card);
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .slot .ini {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      align-content: center;
+      gap: .15rem;
+      font-family: var(--font-display);
+      font-size: 4.2rem;
+      color: var(--honey-2);
+      line-height: 1;
+      text-align: center;
+    }
+
+    .slot .ini small {
+      font-family: var(--font-body);
+      font-size: .66rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, .75);
+    }
+
+    .slot img,
+    .ph img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity .4s;
+    }
+
+    .slot.has img,
+    .ph.has img {
+      opacity: 1;
+    }
+
+    .slot.has .ini {
+      display: none;
+    }
+
+    .slot.has,
+    .ph.has {
+      cursor: default;
+    }
+
+    .ph {
+      position: relative;
+      margin: 0;
+      aspect-ratio: var(--ar, 4 / 3);
+      max-width: 100%;
+      border: 1.5px dashed var(--blue-2);
+      border-radius: 14px;
+      background: var(--tint);
+      overflow: hidden;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+    }
+
+    .ph.has {
+      border-style: solid;
+      border-color: var(--line);
+    }
+
+    .ph figcaption {
+      display: grid;
+      justify-items: center;
+      gap: .1rem;
+      text-align: center;
+      padding: .75rem;
+      color: var(--muted);
+      font-size: .8rem;
+      line-height: 1.35;
+    }
+
+    .ph figcaption svg {
+      width: 1.6rem;
+      height: 1.6rem;
+      color: var(--blue);
+    }
+
+    .ph figcaption b {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .ph figcaption small {
+      font-size: .68rem;
+      opacity: .85;
+      overflow-wrap: anywhere;
+    }
+
+    .ph.has figcaption {
+      display: none;
+    }
+
+    /* Pengantar */
+    .guide {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .gcard {
+      position: relative;
+      display: grid;
+      gap: .5rem;
+      align-content: start;
+      padding: 1.3rem;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .gcard .ico {
+      margin-bottom: .3rem;
+    }
+
+    .gcard .lab {
+      font-size: .66rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .gcard h3 {
+      font-size: 1.35rem;
+      line-height: 1.2;
+    }
+
+    .gcard p {
+      font-size: .88rem;
+      line-height: 1.55;
+    }
+
+    .gcard .go {
+      position: absolute;
+      right: 1.1rem;
+      top: 1.3rem;
+      width: 1.2rem;
+      height: 1.2rem;
+      color: var(--muted);
+      transition: transform .25s, color .25s;
+    }
+
+    .gcard:hover .go {
+      transform: translateX(3px);
+      color: var(--blue);
+    }
+
+    .flow-wrap {
+      display: grid;
+      gap: .8rem;
+    }
+
+    .flow {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+    }
+
+    .flow li {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--card);
+      border: 1.5px solid var(--line);
+      border-radius: 99px;
+      padding: .35rem 1rem .35rem .4rem;
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .flow .fi {
+      display: grid;
+      place-items: center;
+      width: 1.8rem;
+      height: 1.8rem;
+      border-radius: 50%;
+      background: var(--tint);
+      color: var(--blue);
+    }
+
+    .flow .fi svg {
+      width: .95rem;
+      height: .95rem;
+    }
+
+    /* Profil */
+    .profil-layout {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media (max-width: 1024px) {
+      .profil-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 84px;
+      background: var(--grad-card);
+      color: #fff;
+      border-radius: 18px;
+      padding: 2rem 1.5rem;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      gap: 1.1rem;
+      justify-items: center;
+      text-align: center;
+    }
+
+    @media (max-width: 1024px) {
+      .sidebar {
+        position: static;
+      }
+    }
+
+    .sb-photo {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      padding: 4px;
+      border-radius: 50%;
+      background: var(--grad-honey);
+    }
+
+    .sb-photo::after {
+      content: "";
+      position: absolute;
+      inset: -10px;
+      border-radius: 50%;
+      border: 1.5px dashed rgba(255, 255, 255, .5);
+      animation: spin 20s linear infinite;
+      pointer-events: none;
+    }
+
+    .sb-photo .slot .ini {
+      font-size: 2.6rem;
+    }
+
+    .sb-name {
+      color: #fff;
+      font-size: 1.5rem;
+      line-height: 1.15;
+    }
+
+    .sb-role {
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .8);
+      margin-top: -.5rem;
+    }
+
+    .sb-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .4rem;
+    }
+
+    .sb-tags span {
+      font-size: .72rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, .12);
+      padding: .15rem .7rem;
+      border-radius: 99px;
+    }
+
+    .sb-list {
+      margin: 0;
+      display: grid;
+      gap: .85rem;
+      text-align: left;
+      width: 100%;
+      border-top: 1px solid rgba(255, 255, 255, .2);
+      padding-top: 1rem;
+    }
+
+    .sb-list>div {
+      display: grid;
+      grid-template-columns: 1.5rem minmax(0, 1fr);
+      column-gap: .65rem;
+      align-items: start;
+    }
+
+    .sb-list svg {
+      grid-row: 1 / 3;
+      width: 1.15rem;
+      height: 1.15rem;
+      color: var(--honey-2);
+      margin-top: .12rem;
+    }
+
+    .sb-list dt {
+      font-size: .66rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--honey-2);
+    }
+
+    .sb-list dd {
+      margin: 0;
+      font-size: .88rem;
+      line-height: 1.45;
+    }
+
+    .pcol {
+      display: grid;
+      gap: 1.5rem;
+      min-width: 0;
+    }
+
+    .pblock {
+      padding: 1.7rem;
+      display: grid;
+      gap: .75rem;
+    }
+
+    .pblock-top {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+    }
+
+    .pflex {
+      display: grid;
+      grid-template-columns: minmax(0, 230px) minmax(0, 1fr);
+      gap: 1.3rem;
+      align-items: start;
+    }
+
+    .pflex p {
+      margin: 0;
+    }
+
+    @media (max-width: 640px) {
+      .pflex {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pblock h3 {
+      font-size: 1.5rem;
+      line-height: 1.15;
+    }
+
+    .pblock .lab {
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--blue);
+      display: block;
+      margin-bottom: .1rem;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+    }
+
+    .pill {
+      font-size: .78rem;
+      font-weight: 700;
+      background: var(--tint);
+      color: var(--blue);
+      padding: .2rem .8rem;
+      border-radius: 99px;
+    }
+
+    .mf-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: .8rem;
+      margin-top: .3rem;
+    }
+
+    .mf {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      background: var(--tint);
+      border-radius: 12px;
+      padding: .8rem 1rem;
+      min-width: 0;
+    }
+
+    .mf small {
+      display: block;
+      font-size: .66rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .mf b {
+      display: block;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: .92rem;
+      line-height: 1.4;
+    }
+
+    /* Pita akordion */
+    .band-wrap {
+      background: var(--bg);
+    }
+
+    .band-hd {
+      padding: 3rem max(1rem, 5%) 0;
+    }
+
+    .band {
+      max-width: 1140px;
+      margin-inline: auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      border: 0;
+      border-radius: 16px;
+      padding: 1.2rem 1.6rem;
+      cursor: pointer;
+      text-align: left;
+      font: inherit;
+      color: #fff;
+      background: var(--band-blue);
+      box-shadow: var(--shadow-md);
+    }
+
+    .band.honey {
+      background: var(--band-honey);
+      color: #0a2247;
+    }
+
+    .band-num {
+      font-family: var(--font-display);
+      font-size: 2.6rem;
+      line-height: 1;
+      opacity: .9;
+      flex: none;
+    }
+
+    .band-txt {
+      display: grid;
+      margin-right: auto;
+      min-width: 0;
+    }
+
+    .band-txt small {
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      opacity: .85;
+    }
+
+    .band-txt b {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(1.25rem, 3vw, 1.9rem);
+      line-height: 1.15;
+    }
+
+    .band .chev {
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .18);
+      display: grid;
+      place-items: center;
+      flex: none;
+      transition: transform .4s;
+    }
+
+    .band.honey .chev {
+      background: rgba(10, 34, 71, .12);
+    }
+
+    .band .chev svg {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+
+    .band[aria-expanded="false"] .chev {
+      transform: rotate(-90deg);
+    }
+
+    .band-body {
+      display: grid;
+      grid-template-rows: 1fr;
+      transition: grid-template-rows .6s;
+    }
+
+    .band-wrap.closed .band-body {
+      grid-template-rows: 0fr;
+    }
+
+    .band-body>div {
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    /* Tab dan panel analisis */
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    .tab {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      font: inherit;
+      font-size: .82rem;
+      font-weight: 800;
+      padding: .5rem 1.1rem .5rem .9rem;
+      border-radius: 99px;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color .2s, color .2s;
+    }
+
+    .tab svg {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .tab:hover {
+      border-color: var(--blue-2);
+      color: var(--blue);
+    }
+
+    .tab[aria-selected="true"] {
+      background: var(--grad-sec);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .panel {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+      gap: 2rem;
+      padding: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .side {
+      display: grid;
+      gap: .9rem;
+      align-content: start;
+      min-width: 0;
+    }
+
+    .info {
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+      min-width: 0;
+    }
+
+    .ihead {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+    }
+
+    .ihead h3 {
+      font-size: 1.7rem;
+      line-height: 1.15;
+    }
+
+    .ana {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: .8rem;
+    }
+
+    .an {
+      background: var(--tint);
+      border-radius: 12px;
+      padding: .9rem 1rem;
+      display: grid;
+      gap: .35rem;
+      align-content: start;
+      min-width: 0;
+    }
+
+    .an h4,
+    .teori h4,
+    .refl h4,
+    .rc h4 {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      font-family: var(--font-body);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .an p,
+    .teori p,
+    .refl p {
+      font-size: .92rem;
+      line-height: 1.6;
+    }
+
+    .pm {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: .8rem;
+    }
+
+    .pm>div {
+      border-radius: 12px;
+      padding: .9rem 1rem;
+      display: grid;
+      gap: .4rem;
+      align-content: start;
+      min-width: 0;
+    }
+
+    .pm .plus {
+      background: var(--plus-bg);
+    }
+
+    .pm .minus {
+      background: var(--minus-bg);
+    }
+
+    .pm h4 {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      font-family: var(--font-body);
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .pm .plus h4 {
+      color: var(--plus);
+    }
+
+    .pm .minus h4 {
+      color: var(--minus);
+    }
+
+    .pm ul {
+      margin: 0;
+      padding-left: 1.05rem;
+      font-size: .9rem;
+      display: grid;
+      gap: .3rem;
+    }
+
+    .teori {
+      border: 1.5px solid var(--line);
+      border-left: 4px solid var(--honey);
+      border-radius: 12px;
+      padding: .9rem 1.1rem;
+      display: grid;
+      gap: .35rem;
+      background: var(--card);
+    }
+
+    .refl {
+      background: var(--tint);
+      border-radius: 12px;
+      padding: .9rem 1.1rem;
+      display: grid;
+      gap: .35rem;
+    }
+
+    .btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+    }
+
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      text-decoration: none;
+      font: inherit;
+      font-weight: 800;
+      font-size: .78rem;
+      line-height: 1.5;
+      padding: .5rem 1.15rem;
+      border-radius: 99px;
+      color: #fff;
+      background: var(--grad-sec);
+      border: 0;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .btn-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(31, 95, 224, .35);
+    }
+
+    .btn-link.soft {
+      background: var(--tint);
+      color: var(--blue);
+    }
+
+    .btn-link.soft:hover {
+      box-shadow: none;
+      background: var(--line);
+    }
+
+    /* Tipe berkas */
+    .ftype {
+      display: grid;
+      place-items: center;
+      flex: none;
+      font-size: .62rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      color: #fff;
+      border-radius: 8px;
+      background: #1f5fe0;
+    }
+
+    .ftype[data-t="pdf"] {
+      background: #c93b3b;
+    }
+
+    .ftype[data-t="slide"] {
+      background: var(--honey);
+      color: #0a2247;
+    }
+
+    .ftype[data-t="video"] {
+      background: #0b78a8;
+    }
+
+    .docchip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .6rem .9rem;
+      background: var(--tint);
+      border-radius: 12px;
+      padding: .8rem 1rem;
+    }
+
+    .docchip .ftype {
+      width: 2.6rem;
+      height: 2.6rem;
+    }
+
+    .docchip>div:nth-child(2) {
+      flex: 1 1 8rem;
+      min-width: 0;
+      line-height: 1.3;
+    }
+
+    .docchip b {
+      color: var(--ink);
+      font-weight: 800;
+      font-size: .92rem;
+      display: block;
+    }
+
+    .docchip small {
+      color: var(--muted);
+      font-size: .76rem;
+    }
+
+    .docchip .btns {
+      flex: 1 1 100%;
+    }
+
+    /* Video dan kartu produk */
+    .vid {
+      position: relative;
+    }
+
+    .play-btn {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      background: var(--honey);
+      color: #0a2247;
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow-md);
+      transition: transform .2s;
+      z-index: 2;
+    }
+
+    .play-btn:hover {
+      transform: scale(1.08);
+    }
+
+    .play-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+      stroke: none;
+      margin-left: 3px;
+    }
+
+    .vid .ph {
+      place-items: end center;
+    }
+
+    .vid .ph figcaption {
+      padding-bottom: .9rem;
+    }
+
+    .rgrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .rc {
+      padding: 1.4rem;
+      border-top: 4px solid var(--blue-2);
+      display: grid;
+      gap: .5rem;
+      align-content: start;
+    }
+
+    .rc.honey {
+      border-top-color: var(--honey);
+    }
+
+    .rc.mint {
+      border-top-color: var(--mint);
+    }
+
+    .rc.sky {
+      border-top-color: var(--sky);
+    }
+
+    .rc-top {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+    }
+
+    .rc h3 {
+      font-size: 1.3rem;
+      line-height: 1.2;
+    }
+
+    .rc p {
+      font-size: .92rem;
+    }
+
+    .sk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .sk {
+      padding: 1.3rem;
+      display: grid;
+      gap: .9rem;
+      align-content: start;
+    }
+
+    .sk-top {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+
+    .sk-badge {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+
+    .sk dl {
+      margin: 0;
+      display: grid;
+      gap: .6rem;
+    }
+
+    .sk dt {
+      font-size: .66rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .sk dd {
+      margin: 0;
+      font-size: .92rem;
+    }
+
+    /* Pita gelap: refleksi */
+    .dark {
+      background: var(--band);
+      color: var(--on-band-muted);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dark::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 85% 10%, rgba(56, 189, 248, .22), transparent 55%), radial-gradient(ellipse at 5% 95%, rgba(255, 193, 69, .12), transparent 50%);
+      pointer-events: none;
+    }
+
+    .dark .sec-in {
+      position: relative;
+    }
+
+    .dark .sec-h {
+      color: #fff;
+    }
+
+    .dark .sec-h em {
+      color: var(--honey-2);
+    }
+
+    .dark .sec-tag {
+      color: var(--honey-2);
+    }
+
+    .rf-list {
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .rf {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(0, 2.2fr);
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .13);
+      border-radius: 18px;
+    }
+
+    @media (max-width: 960px) {
+      .rf {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rf-head {
+      display: grid;
+      gap: .6rem;
+      align-content: start;
+      justify-items: start;
+    }
+
+    .rf-head .ico {
+      background: rgba(255, 193, 69, .16);
+      color: var(--honey-2);
+    }
+
+    .rf-head .lab {
+      font-size: .66rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--honey-2);
+    }
+
+    .rf-head h3 {
+      color: #fff;
+      font-size: 1.6rem;
+      line-height: 1.15;
+    }
+
+    .rf-head p {
+      font-size: .9rem;
+    }
+
+    .rf-cols {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .8rem;
+    }
+
+    @media (max-width: 700px) {
+      .rf-cols {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rf-col {
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 12px;
+      padding: .9rem 1rem;
+      display: grid;
+      gap: .4rem;
+      align-content: start;
+    }
+
+    .rf-col h4 {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      font-family: var(--font-body);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--honey-2);
+    }
+
+    .rf-col p {
+      font-size: .9rem;
+      line-height: 1.6;
+    }
+
+    /* Lampiran */
+    .fchips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    .fchip {
+      font: inherit;
+      font-size: .8rem;
+      font-weight: 800;
+      padding: .4rem 1.1rem;
+      border-radius: 99px;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .fchip[aria-pressed="true"] {
+      background: var(--grad-sec);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .lamp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .lamp {
+      display: flex;
+      gap: 1.1rem;
+      padding: 1.2rem;
+      align-items: flex-start;
+    }
+
+    .lamp .btns {
+      gap: .4rem;
+    }
+
+    .lamp .btn-link {
+      padding: .45rem .85rem;
+      font-size: .76rem;
+    }
+
+    .paper {
+      position: relative;
+      flex: none;
+      width: 66px;
+      aspect-ratio: 3 / 4;
+      border-radius: 8px;
+      border: 1.5px solid var(--line);
+      background-color: var(--card);
+      box-shadow: var(--shadow-sm);
+      background-image: repeating-linear-gradient(to bottom, transparent 0 9px, var(--line) 9px 10px);
+      background-size: calc(100% - 18px) 62%;
+      background-repeat: no-repeat;
+      background-position: 9px 10px;
+    }
+
+    .paper .ftype {
+      position: absolute;
+      left: -6px;
+      bottom: 10px;
+      padding: .2rem .5rem;
+      border-radius: 6px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .lamp-body {
+      display: grid;
+      gap: .5rem;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .lamp-body .lab {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .66rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .lamp-body h3 {
+      font-size: 1.25rem;
+      line-height: 1.2;
+    }
+
+    .lamp-body p {
+      font-size: .88rem;
+      line-height: 1.55;
+    }
+
+    .empty-chip {
+      justify-self: start;
+      font-size: .72rem;
+      font-weight: 800;
+      color: var(--todo);
+      background: var(--todo-bg);
+      border-radius: 99px;
+      padding: .05rem .7rem;
+    }
+
+    /* Jendela pratinjau */
+    .viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      display: grid;
+      place-items: center;
+      padding: max(1rem, env(safe-area-inset-top, 0px)) max(1rem, env(safe-area-inset-right, 0px)) max(1rem, env(safe-area-inset-bottom, 0px)) max(1rem, env(safe-area-inset-left, 0px));
+      background: rgba(3, 10, 26, .72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .v-box {
+      width: min(100%, 1000px);
+      height: min(100%, 780px);
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      background: var(--card);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--line);
+    }
+
+    .v-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .5rem .9rem;
+      padding: .8rem 1rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .v-bar b {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-right: auto;
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .v-frame {
+      position: relative;
+      background: var(--tint);
+      min-height: 0;
+    }
+
+    .v-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #fff;
+    }
+
+    .v-empty {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-content: center;
+      justify-items: center;
+      gap: .5rem;
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--muted);
+    }
+
+    .v-empty b {
+      color: var(--ink);
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.3rem;
+    }
+
+    .v-note {
+      padding: .6rem 1rem;
+      font-size: .78rem;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+
+    /* Kontak dan footer */
+    .kgrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .kc {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem 1.3rem;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .kc>span:nth-child(2) {
+      display: grid;
+      min-width: 0;
+      line-height: 1.4;
+    }
+
+    .kc small {
+      font-size: .66rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .kc b {
+      color: var(--ink);
+      font-weight: 800;
+      font-size: .95rem;
+      overflow-wrap: anywhere;
+    }
+
+    .kc .go {
+      margin-left: auto;
+      width: 1.1rem;
+      height: 1.1rem;
+      color: var(--muted);
+      flex: none;
+      transition: transform .25s, color .25s;
+    }
+
+    .kc:hover .go {
+      transform: translateX(3px);
+      color: var(--blue);
+    }
+
+    footer {
+      background: var(--band);
+      color: var(--on-band-muted);
+      padding: 3.5rem max(1rem, 5%) 2rem;
+    }
+
+    .foot {
+      max-width: 1140px;
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 3rem;
+    }
+
+    @media (max-width: 760px) {
+      .foot {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+      }
+    }
+
+    .foot h4 {
+      font-family: var(--font-body);
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--honey-2);
+      margin-bottom: .6rem;
+    }
+
+    .foot .fb {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .foot ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .3rem 1rem;
+      font-size: .9rem;
+    }
+
+    .foot a {
+      color: var(--on-band-muted);
+      text-decoration: none;
+    }
+
+    .foot a:hover {
+      color: #fff;
+    }
+
+    .copyr {
+      max-width: 1140px;
+      margin: 2.5rem auto 0;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(255, 255, 255, .12);
+      font-size: .8rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .hero-text>*,
+      .ring1,
+      .ring2,
+      .sb-photo::after,
+      .badge i {
+        animation: none;
+      }
+
+      .hero-slide,
+      .band-body,
+      .band .chev,
+      .lift,
+      .gcard .go,
+      .kc .go {
+        transition: none;
+      }
+    }
+  </style>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-cam" viewBox="0 0 24 24">
+      <path d="M4 8h3l1.6-2.4h6.8L17 8h3v11H4z" />
+      <circle cx="12" cy="13" r="3.4" />
+    </symbol>
+    <symbol id="i-link" viewBox="0 0 24 24">
+      <path d="M14 4h6v6M20 4l-9 9M18 14v5H5V6h5" />
+    </symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24">
+      <path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z" />
+      <circle cx="12" cy="12" r="3" />
+    </symbol>
+    <symbol id="i-play" viewBox="0 0 24 24">
+      <path d="M6 4l14 8-14 8z" />
+    </symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24">
+      <path d="M6 9l6 6 6-6" />
+    </symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M5 19l1.4-1.4M17.6 6.4L19 5" />
+    </symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24">
+      <path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z" />
+    </symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24">
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    </symbol>
+    <symbol id="i-x" viewBox="0 0 24 24">
+      <path d="M6 6l12 12M18 6L6 18" />
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24">
+      <path d="M5 12h14M13 6l6 6-6 6" />
+    </symbol>
+    <symbol id="i-user" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4.5 21c0-4 3.4-6.5 7.5-6.5s7.5 2.5 7.5 6.5" />
+    </symbol>
+    <symbol id="i-clip" viewBox="0 0 24 24">
+      <rect x="5" y="4.5" width="14" height="17" rx="2" />
+      <path d="M9 4.5v-1h6v1" />
+      <path d="M9 11h6M9 15h6" />
+    </symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24">
+      <path d="M12 3l9 5-9 5-9-5z" />
+      <path d="M3 12.5l9 5 9-5" />
+      <path d="M3 16.5l9 5 9-5" />
+    </symbol>
+    <symbol id="i-screen" viewBox="0 0 24 24">
+      <rect x="3" y="4" width="18" height="12" rx="2" />
+      <path d="M8 20h8M12 16v4" />
+    </symbol>
+    <symbol id="i-video" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M10 8.6l5.6 3.4-5.6 3.4z" />
+    </symbol>
+    <symbol id="i-users" viewBox="0 0 24 24">
+      <circle cx="9" cy="8" r="3.5" />
+      <path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6" />
+      <circle cx="17" cy="9" r="2.6" />
+      <path d="M17.2 14.2c2.6.2 4.3 2.1 4.3 5.3" />
+    </symbol>
+    <symbol id="i-filecheck" viewBox="0 0 24 24">
+      <path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z" />
+      <path d="M14 3v5h5" />
+      <path d="M9 14.5l2 2 4-4" />
+    </symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24">
+      <path d="M4 20l1-4.2L16.5 4.3a2 2 0 012.8 0l.4.4a2 2 0 010 2.8L8.2 19z" />
+      <path d="M14.5 6.5l3 3" />
+    </symbol>
+    <symbol id="i-award" viewBox="0 0 24 24">
+      <circle cx="12" cy="9" r="5.5" />
+      <path d="M8.8 13.6L7.5 21l4.5-2.6 4.5 2.6-1.3-7.4" />
+    </symbol>
+    <symbol id="i-file" viewBox="0 0 24 24">
+      <path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z" />
+      <path d="M14 3v5h5" />
+      <path d="M9 13h6M9 17h6" />
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24">
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="M3.5 7.2l8.5 6 8.5-6" />
+    </symbol>
+    <symbol id="i-insta" viewBox="0 0 24 24">
+      <rect x="4" y="4" width="16" height="16" rx="5" />
+      <circle cx="12" cy="12" r="3.8" />
+      <path d="M16.9 7.1h.01" />
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24">
+      <path d="M12 21s7-6.2 7-11.5A7 7 0 005 9.5C5 14.8 12 21 12 21z" />
+      <circle cx="12" cy="9.5" r="2.5" />
+    </symbol>
+    <symbol id="i-school" viewBox="0 0 24 24">
+      <path d="M3 21h18" />
+      <path d="M5 21V9.5L12 4l7 5.5V21" />
+      <path d="M10 21v-5h4v5" />
+    </symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24">
+      <path d="M2 9.5L12 4.5l10 5-10 5z" />
+      <path d="M6 12v4.5c0 1.5 2.7 3 6 3s6-1.5 6-3V12" />
+    </symbol>
+    <symbol id="i-target" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="5" />
+      <circle cx="12" cy="12" r="1" />
+    </symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M15.6 8.4l-2 5.2-5.2 2 2-5.2z" />
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M8 12.3l2.7 2.7L16 9.6" />
+    </symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7.5v5.5M12 16.4h.01" />
+    </symbol>
+    <symbol id="i-book" viewBox="0 0 24 24">
+      <path d="M5.5 3H19v15H5.5A1.5 1.5 0 004 19.5v-15A1.5 1.5 0 015.5 3z" />
+      <path d="M4 19.5A1.5 1.5 0 005.5 21H19v-3" />
+    </symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24">
+      <path d="M4 12a8 8 0 0113.7-5.6L20 9" />
+      <path d="M20 4v5h-5" />
+      <path d="M20 12a8 8 0 01-13.7 5.6L4 15" />
+      <path d="M4 20v-5h5" />
+    </symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24">
+      <path d="M9 18h6M10 21h4" />
+      <path d="M12 3a6 6 0 00-3.6 10.8c.6.5 1 1.2 1 2v.2h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0012 3z" />
+    </symbol>
+    <symbol id="i-star" viewBox="0 0 24 24">
+      <path d="M12 3.5l2.7 5.6 6.1.8-4.5 4.2 1.1 6.1-5.4-2.9-5.4 2.9 1.1-6.1-4.5-4.2 6.1-.8z" />
+    </symbol>
+    <symbol id="i-msg" viewBox="0 0 24 24">
+      <path d="M20.5 12a8.5 8.5 0 01-12.4 7.5L3.5 20.5l1.2-4.3A8.5 8.5 0 1120.5 12z" />
+    </symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24">
+      <rect x="3.5" y="5" width="17" height="15.5" rx="2" />
+      <path d="M3.5 10h17M8 3v4M16 3v4" />
+    </symbol>
+    <symbol id="i-code" viewBox="0 0 24 24">
+      <path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14" />
+    </symbol>
+  </svg>
+
+  <nav class="nav" aria-label="Navigasi utama">
+    <div class="nav-in">
+      <a class="nav-title" href="#beranda"><span class="logo">H<img src="assets/favicon.ico" alt=""
+            onerror="this.remove()"></span>E-Portfolio PPG</a>
+      <div class="nav-links" id="navLinks">
+        <a href="#profil" data-for="profil"><svg class="ic">
+            <use href="#i-user" />
+          </svg>Profil</a>
+        <a href="#porto1" data-for="porto1"><svg class="ic">
+            <use href="#i-clip" />
+          </svg>E-Portfolio 1</a>
+        <a href="#porto2" data-for="porto2"><svg class="ic">
+            <use href="#i-layers" />
+          </svg>E-Portfolio 2</a>
+        <a href="#refleksi" data-for="refleksi"><svg class="ic">
+            <use href="#i-bulb" />
+          </svg>Refleksi</a>
+        <a href="#lampiran" data-for="lampiran"><svg class="ic">
+            <use href="#i-file" />
+          </svg>Lampiran</a>
+        <a href="#kontak" data-for="kontak"><svg class="ic">
+            <use href="#i-mail" />
+          </svg>Kontak</a>
+      </div>
+      <button class="toggle" id="theme" type="button" aria-label="Ganti tema terang atau gelap"><span class="knob"><svg
+            class="ic sun">
+            <use href="#i-sun" />
+          </svg><svg class="ic moon">
+            <use href="#i-moon" />
+          </svg></span></button>
+      <button class="burger" id="burger" type="button" aria-label="Buka menu" aria-expanded="false"><svg class="ic">
+          <use href="#i-menu" />
+        </svg></button>
+    </div>
+  </nav>
+
+  <!-- BERANDA -->
+  <header class="hero" id="beranda">
+    <div class="slides" aria-hidden="true">
+      <div class="hero-slide s1 active"></div>
+      <div class="hero-slide s2"></div>
+      <div class="hero-slide s3"></div>
+      <div class="hero-slide s4"></div>
+      <div class="hero-slide s5"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-geo"></div>
+    <div class="hero-in">
+      <div class="hero-text">
+        <span class="badge"><i></i>PPG Calon Guru · PPL Mandiri</span>
+        <h1 class="hero-name">Portofolio <em>Hafidz Ruzaini</em></h1>
+        <p class="hero-sub">Perencanaan, pelaksanaan, dan analisis praktik mengajar mandiri mata pelajaran Informatika
+          di SMA Negeri 2 Sukoharjo.</p>
+        <blockquote class="hero-quote">Guru bukan hanya pengajar ilmu, tetapi penjaga harapan dan arsitek masa depan
+          generasi bangsa.</blockquote>
+        <div class="cta">
+          <a class="btn-gold" href="#porto1"><svg class="ic">
+              <use href="#i-clip" />
+            </svg>E-Portfolio 1</a>
+          <a class="btn-ghost" href="#porto2"><svg class="ic">
+              <use href="#i-layers" />
+            </svg>E-Portfolio 2</a>
+        </div>
+        <div class="hstats">
+          <div class="hstat"><span class="si"><svg class="ic">
+                <use href="#i-cal" />
+              </svg></span>
+            <div><b>4</b><span class="t">Siklus praktik mengajar</span></div>
+          </div>
+          <div class="hstat"><span class="si"><svg class="ic">
+                <use href="#i-file" />
+              </svg></span>
+            <div><b data-count="lamp">10</b><span class="t">Artefak terlampir</span></div>
+          </div>
+          <div class="hstat"><span class="si"><svg class="ic">
+                <use href="#i-layers" />
+              </svg></span>
+            <div><b>2</b><span class="t">E-Portfolio</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="photo-area">
+        <div class="photo-wrap">
+          <div class="ring1"></div>
+          <div class="ring2"></div>
+          <div class="photo-frame">
+            <!-- FOTO PROFIL: simpan sebagai assets/profil0.jpg -->
+            <figure class="slot" title="Klik untuk pratinjau foto" aria-label="Foto profil Hafidz Ruzaini">
+              <div class="ini">HR<small>Tambah foto</small></div><img src="assets/profil0.jpg" alt="Foto Hafidz Ruzaini"
+                decoding="async">
+            </figure>
+          </div>
+          <span class="cap">Hafidz Ruzaini</span>
+        </div>
+      </div>
+    </div>
+    <div class="dots" id="dots" role="tablist" aria-label="Slide latar"></div>
+  </header>
+
+  <!-- PENGANTAR -->
+  <section class="sec alt" id="pengantar" data-nav>
+    <div class="sec-in">
+      <div class="sec-head">
+        <p class="sec-tag"><span class="tg"><svg class="ic">
+              <use href="#i-compass" />
+            </svg></span>Pengantar</p>
+        <h2 class="sec-h">Dari rencana ke refleksi, <em>satu perjalanan</em></h2>
+        <p class="sec-desc">Portofolio ini merangkum praktik mengajar mandiri (PPL Mandiri) mata pelajaran Informatika
+          di SMA Negeri 2 Sukoharjo. Isinya mencakup perencanaan, media, pelaksanaan, penilaian, dan kegiatan
+          nonmengajar. Setiap artefak dianalisis dengan kajian teori, lalu ditutup dengan refleksi.</p>
+      </div>
+      <div class="guide">
+        <a class="card gcard lift" href="#porto1"><svg class="ic go">
+            <use href="#i-arrow" />
+          </svg><span class="ico"><svg class="ic">
+              <use href="#i-clip" />
+            </svg></span><span class="lab">E-Portfolio 1 · Topik 3 dan UTS</span>
+          <h3>Analisis artefak</h3>
+          <p>Rancangan siklus 1, materi, media, video, kegiatan nonmengajar, instrumen, hasil kerja siswa, serta
+            penilaian GP dan DPL.</p>
+        </a>
+        <a class="card gcard lift" href="#porto2"><svg class="ic go">
+            <use href="#i-arrow" />
+          </svg><span class="ico"><svg class="ic">
+              <use href="#i-layers" />
+            </svg></span><span class="lab">E-Portfolio 2 · UAS</span>
+          <h3>Siklus 2 sampai 4</h3>
+          <p>Perkembangan tiap siklus beserta rancangan dan video pelaksanaan terbaik.</p>
+        </a>
+        <a class="card gcard lift" href="#refleksi"><svg class="ic go">
+            <use href="#i-arrow" />
+          </svg><span class="ico"><svg class="ic">
+              <use href="#i-bulb" />
+            </svg></span><span class="lab">Refleksi</span>
+          <h3>Model guru dan filosofi</h3>
+          <p>Model guru yang dituju, filosofi mengajar, dan refleksi akhir, masing-masing dengan rencana tindak lanjut.
+          </p>
+        </a>
+        <a class="card gcard lift" href="#lampiran"><svg class="ic go">
+            <use href="#i-arrow" />
+          </svg><span class="ico"><svg class="ic">
+              <use href="#i-file" />
+            </svg></span><span class="lab">Lampiran</span>
+          <h3>Dokumen dan video</h3>
+          <p>Pratinjau berkas langsung di halaman ini, atau buka tautan aslinya di Drive dan YouTube.</p>
+        </a>
+      </div>
+      <div class="flow-wrap">
+        <p class="sec-tag">Alur analisis di setiap artefak</p>
+        <ol class="flow">
+          <li><span class="fi"><svg class="ic">
+                <use href="#i-compass" />
+              </svg></span>Konteks</li>
+          <li><span class="fi"><svg class="ic">
+                <use href="#i-target" />
+              </svg></span>Tujuan</li>
+          <li><span class="fi"><svg class="ic">
+                <use href="#i-check" />
+              </svg></span>Kelebihan</li>
+          <li><span class="fi"><svg class="ic">
+                <use href="#i-alert" />
+              </svg></span>Kekurangan</li>
+          <li><span class="fi"><svg class="ic">
+                <use href="#i-book" />
+              </svg></span>Kajian teori</li>
+          <li><span class="fi"><svg class="ic">
+                <use href="#i-refresh" />
+              </svg></span>Tindak lanjut</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFIL -->
+  <section class="sec" id="profil" data-nav>
+    <div class="sec-in">
+      <div class="sec-head">
+        <p class="sec-tag"><span class="tg"><svg class="ic">
+              <use href="#i-user" />
+            </svg></span>Profil guru</p>
+        <h2 class="sec-h">Dari Cilacap menuju <em>ruang kelas</em> Informatika</h2>
+      </div>
+      <div class="profil-layout">
+        <aside class="sidebar">
+          <div class="sb-photo">
+            <figure class="slot" title="Klik untuk pratinjau foto">
+              <div class="ini">HR</div><img src="assets/profil0.jpg" alt="Foto Hafidz Ruzaini" decoding="async">
+            </figure>
+          </div>
+          <h3 class="sb-name">Hafidz Ruzaini, S.Kom</h3>
+          <p class="sb-role">PPG Calon Guru Informatika</p>
+          <div class="sb-tags"><span>Informatika</span><span>Kurikulum Merdeka</span><span>SMA</span></div>
+          <dl class="sb-list">
+            <div><svg class="ic">
+                <use href="#i-pin" />
+              </svg>
+              <dt>Asal</dt>
+              <dd>Cilacap, Jawa Tengah</dd>
+            </div>
+            <div><svg class="ic">
+                <use href="#i-cap" />
+              </svg>
+              <dt>Perguruan tinggi</dt>
+              <dd>Universitas Muhammadiyah Surakarta</dd>
+            </div>
+            <div><svg class="ic">
+                <use href="#i-school" />
+              </svg>
+              <dt>Sekolah praktik</dt>
+              <dd>SMA Negeri 2 Sukoharjo</dd>
+            </div>
+            <div><svg class="ic">
+                <use href="#i-user" />
+              </svg>
+              <dt>Guru pamong (GP)</dt>
+              <dd>Hendratno</dd>
+            </div>
+            <div><svg class="ic">
+                <use href="#i-award" />
+              </svg>
+              <dt>Dosen pembimbing lapangan (DPL)</dt>
+              <dd>Dias Aziz Pramudita</dd>
+            </div>
+          </dl>
+        </aside>
+        <div class="pcol">
+          <article class="card pblock">
+            <div class="pblock-top"><span class="ico"><svg class="ic">
+                  <use href="#i-pin" />
+                </svg></span>
+              <div><span class="lab">Asal dan keunikan daerah</span>
+                <h3>Gotong royong di pesisir Cilacap</h3>
+              </div>
+            </div>
+            <div class="pflex">
+              <figure class="ph" aria-label="Ikon daerah Cilacap"><img src="assets/cilacap.jpg"
+                  alt="Ikon daerah Cilacap" loading="lazy" decoding="async">
+                <figcaption><svg class="ic">
+                    <use href="#i-cam" />
+                  </svg><b>Ikon daerah Cilacap</b><small>assets/cilacap.jpg</small></figcaption>
+              </figure>
+              <p>Saya tumbuh di pesisir Cilacap, di tengah kehidupan masyarakat yang menjunjung gotong royong. Berada di
+                antara orang-orang dengan latar yang beragam mengajarkan saya bahwa setiap anak punya potensi dan cara
+                belajar yang berbeda. Cara pandang itu saya bawa ke ruang kelas.</p>
+            </div>
+          </article>
+          <article class="card pblock">
+            <div class="pblock-top"><span class="ico"><svg class="ic">
+                  <use href="#i-bulb" />
+                </svg></span>
+              <div><span class="lab">Inspirasi menjadi guru</span>
+                <h3>Menuntun siswa tumbuh sesuai kodratnya</h3>
+              </div>
+            </div>
+            <p>Gagasan Ki Hajar Dewantara bahwa pendidikan menuntun anak mengembangkan kodratnya menjadi pegangan saya.
+              Guru tidak menyeragamkan, tetapi menemani setiap siswa menemukan jalannya.</p>
+            <div class="pills"><span class="pill">Ki Hajar Dewantara</span><span class="pill">Pendidikan yang
+                memerdekakan</span></div>
+          </article>
+          <article class="card pblock">
+            <div class="pblock-top"><span class="ico"><svg class="ic">
+                  <use href="#i-target" />
+                </svg></span>
+              <div><span class="lab">Tujuan menjadi guru profesional</span>
+                <h3>Belajar yang bermakna dan relevan</h3>
+              </div>
+            </div>
+            <p>Saya ingin pembelajaran Informatika yang menyenangkan dan dekat dengan dunia digital siswa. Keberhasilan
+              saya ukur dari tumbuhnya semangat belajar, karakter, dan potensi setiap siswa, bukan dari nilai semata.
+            </p>
+          </article>
+          <article class="card pblock">
+            <div class="pblock-top"><span class="ico honey"><svg class="ic">
+                  <use href="#i-school" />
+                </svg></span>
+              <div><span class="lab">Praktik mengajar mandiri</span>
+                <h3>Ringkasan pelaksanaan</h3>
+              </div>
+            </div>
+            <div class="mf-grid">
+              <div class="mf"><span class="ico sm"><svg class="ic">
+                    <use href="#i-school" />
+                  </svg></span>
+                <div><small>Sekolah</small><b>SMA Negeri 2 Sukoharjo</b></div>
+              </div>
+              <div class="mf"><span class="ico sm"><svg class="ic">
+                    <use href="#i-code" />
+                  </svg></span>
+                <div><small>Mata pelajaran</small><b>Informatika</b></div>
+              </div>
+              <div class="mf"><span class="ico sm"><svg class="ic">
+                    <use href="#i-users" />
+                  </svg></span>
+                <div><small>Kelas dan fase</small><b><span class="todo">ISI: kelas dan fase</span></b></div>
+              </div>
+              <div class="mf"><span class="ico sm"><svg class="ic">
+                    <use href="#i-cal" />
+                  </svg></span>
+                <div><small>Periode</small><b><span class="todo">ISI: bulan dan tahun</span></b></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PITA 01: E-PORTFOLIO 1 -->
+  <div class="band-wrap" id="band1">
+    <div class="band-hd">
+      <button class="band" type="button" aria-expanded="true" aria-controls="band1-body">
+        <span class="band-num">01</span>
+        <span class="band-txt"><small>E-Portfolio 1 · Topik 3 dan UTS</small><b>Analisis Artefak Praktik Mengajar
+            Mandiri</b></span>
+        <span class="chev"><svg class="ic">
+            <use href="#i-chev" />
+          </svg></span>
+      </button>
+    </div>
+    <div class="band-body" id="band1-body">
+      <div>
+
+        <section class="sec alt" id="porto1" data-nav>
+          <div class="sec-in">
+            <div class="sec-head">
+              <p class="sec-tag"><span class="tg"><svg class="ic">
+                    <use href="#i-clip" />
+                  </svg></span>E-Portfolio 1</p>
+              <h2 class="sec-h">Artefak mengajar, <em>satu menu</em></h2>
+              <p class="sec-desc">Pilih salah satu tab. Setiap artefak dianalisis dari konteks, tujuan, kelebihan,
+                kekurangan, kajian teori, hingga tindak lanjut. Rancangan dan video pada tab pertama dan keempat berasal
+                dari siklus 1.</p>
+            </div>
+            <div class="tabs" role="tablist" aria-label="Artefak yang dianalisis">
+              <button class="tab" role="tab" id="t-a" aria-controls="p-a" aria-selected="true" type="button"><svg
+                  class="ic">
+                  <use href="#i-clip" />
+                </svg>Rancangan</button>
+              <button class="tab" role="tab" id="t-b" aria-controls="p-b" aria-selected="false" tabindex="-1"
+                type="button"><svg class="ic">
+                  <use href="#i-layers" />
+                </svg>Materi</button>
+              <button class="tab" role="tab" id="t-c" aria-controls="p-c" aria-selected="false" tabindex="-1"
+                type="button"><svg class="ic">
+                  <use href="#i-screen" />
+                </svg>Media</button>
+              <button class="tab" role="tab" id="t-d" aria-controls="p-d" aria-selected="false" tabindex="-1"
+                type="button"><svg class="ic">
+                  <use href="#i-video" />
+                </svg>Video</button>
+              <button class="tab" role="tab" id="t-e" aria-controls="p-e" aria-selected="false" tabindex="-1"
+                type="button"><svg class="ic">
+                  <use href="#i-users" />
+                </svg>Nonmengajar</button>
+              <button class="tab" role="tab" id="t-f" aria-controls="p-f" aria-selected="false" tabindex="-1"
+                type="button"><svg class="ic">
+                  <use href="#i-filecheck" />
+                </svg>Instrumen</button>
+              <button class="tab" role="tab" id="t-g" aria-controls="p-g" aria-selected="false" tabindex="-1"
+                type="button"><svg class="ic">
+                  <use href="#i-pencil" />
+                </svg>Hasil siswa</button>
+              <button class="tab" role="tab" id="t-h" aria-controls="p-h" aria-selected="false" tabindex="-1"
+                type="button"><svg class="ic">
+                  <use href="#i-award" />
+                </svg>Penilaian GP dan DPL</button>
+            </div>
+
+            <!-- A. RANCANGAN (perencanaan lengkap terbaik siklus 1) -->
+            <div class="card panel" id="p-a" role="tabpanel" aria-labelledby="t-a">
+              <div class="side">
+                <figure class="ph"><img src="assets/rancangan-1.jpg" alt="Dokumentasi rancangan pembelajaran"
+                    loading="lazy" decoding="async">
+                  <figcaption><svg class="ic">
+                      <use href="#i-cam" />
+                    </svg><b>Foto dokumentasi</b><small>assets/rancangan-1.jpg</small></figcaption>
+                </figure>
+                <div class="docchip">
+                  <span class="ftype" data-t="doc">DOC</span>
+                  <div><b>Modul ajar siklus 1</b><small>Lampiran A</small></div>
+                  <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-a"><svg class="ic">
+                        <use href="#i-eye" />
+                      </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-a"><svg class="ic">
+                        <use href="#i-link" />
+                      </svg>Buka tautan</a></div>
+                </div>
+              </div>
+              <div class="info">
+                <div class="ihead"><span class="ico"><svg class="ic">
+                      <use href="#i-clip" />
+                    </svg></span>
+                  <div>
+                    <p class="sec-tag">Analisis A · Siklus 1 terbaik</p>
+                    <h3>Rancangan pembelajaran</h3>
+                  </div>
+                </div>
+                <div class="ana">
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-compass" />
+                      </svg>Konteks</h4>
+                    <p><span class="todo">ISI: topik, fase, kelas, alokasi waktu, dan alasan rancangan ini dipilih
+                        sebagai yang terbaik dari siklus 1</span></p>
+                  </div>
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-target" />
+                      </svg>Tujuan</h4>
+                    <p><span class="todo">ISI: tujuan pembelajaran dan capaian yang diharapkan dari siswa</span></p>
+                  </div>
+                </div>
+                <div class="pm">
+                  <div class="plus">
+                    <h4><svg class="ic">
+                        <use href="#i-check" />
+                      </svg>Kelebihan</h4>
+                    <ul>
+                      <li><span class="todo">ISI: keselarasan tujuan, kegiatan, dan asesmen</span></li>
+                      <li><span class="todo">ISI: diferensiasi atau keterlibatan siswa</span></li>
+                    </ul>
+                  </div>
+                  <div class="minus">
+                    <h4><svg class="ic">
+                        <use href="#i-alert" />
+                      </svg>Kekurangan</h4>
+                    <ul>
+                      <li><span class="todo">ISI: bagian yang kurang efektif atau meleset dari rencana</span></li>
+                      <li><span class="todo">ISI: kendala waktu atau sumber belajar</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="teori">
+                  <h4><svg class="ic">
+                      <use href="#i-book" />
+                    </svg>Kajian teori</h4>
+                  <p><span class="todo">ISI: kaitkan dengan teori dari mata kuliah yang terintegrasi dengan PPL Mandiri.
+                      Contoh: Backward Design (Wiggins dan McTighe), taksonomi Bloom revisi, model Problem Based
+                      Learning</span></p>
+                </div>
+                <div class="refl">
+                  <h4><svg class="ic">
+                      <use href="#i-refresh" />
+                    </svg>Tindak lanjut</h4>
+                  <p><span class="todo">ISI: yang akan diubah pada rancangan berikutnya dan alasannya</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- B. MATERI -->
+            <div class="card panel" id="p-b" role="tabpanel" aria-labelledby="t-b" hidden>
+              <div class="side">
+                <figure class="ph"><img src="assets/materi-1.jpg" alt="Dokumentasi materi pembelajaran" loading="lazy"
+                    decoding="async">
+                  <figcaption><svg class="ic">
+                      <use href="#i-cam" />
+                    </svg><b>Foto dokumentasi</b><small>assets/materi-1.jpg</small></figcaption>
+                </figure>
+                <div class="docchip">
+                  <span class="ftype" data-t="doc">DOC</span>
+                  <div><b>Materi pembelajaran</b><small>Lampiran B</small></div>
+                  <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-b"><svg class="ic">
+                        <use href="#i-eye" />
+                      </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-b"><svg class="ic">
+                        <use href="#i-link" />
+                      </svg>Buka tautan</a></div>
+                </div>
+              </div>
+              <div class="info">
+                <div class="ihead"><span class="ico"><svg class="ic">
+                      <use href="#i-layers" />
+                    </svg></span>
+                  <div>
+                    <p class="sec-tag">Analisis B</p>
+                    <h3>Materi pembelajaran</h3>
+                  </div>
+                </div>
+                <div class="ana">
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-compass" />
+                      </svg>Konteks</h4>
+                    <p><span class="todo">ISI: judul materi, fase, serta cara materi disusun dan diterapkan di
+                        kelas</span></p>
+                  </div>
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-target" />
+                      </svg>Tujuan</h4>
+                    <p><span class="todo">ISI: konsep yang ingin dipahami siswa lewat materi ini</span></p>
+                  </div>
+                </div>
+                <div class="pm">
+                  <div class="plus">
+                    <h4><svg class="ic">
+                        <use href="#i-check" />
+                      </svg>Kelebihan</h4>
+                    <ul>
+                      <li><span class="todo">ISI: kedalaman dan urutan konsep</span></li>
+                      <li><span class="todo">ISI: keterkaitan dengan kehidupan siswa</span></li>
+                    </ul>
+                  </div>
+                  <div class="minus">
+                    <h4><svg class="ic">
+                        <use href="#i-alert" />
+                      </svg>Kekurangan</h4>
+                    <ul>
+                      <li><span class="todo">ISI: konsep yang sulit dipahami siswa</span></li>
+                      <li><span class="todo">ISI: bagian yang terlalu padat atau kurang</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="teori">
+                  <h4><svg class="ic">
+                      <use href="#i-book" />
+                    </svg>Kajian teori</h4>
+                  <p><span class="todo">ISI: kaitkan dengan teori dari mata kuliah terintegrasi. Contoh: scaffolding dan
+                      zona perkembangan proksimal (Vygotsky), teori beban kognitif (Sweller)</span></p>
+                </div>
+                <div class="refl">
+                  <h4><svg class="ic">
+                      <use href="#i-refresh" />
+                    </svg>Tindak lanjut</h4>
+                  <p><span class="todo">ISI: respons siswa terhadap materi dan perbaikan yang direncanakan</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- C. MEDIA -->
+            <div class="card panel" id="p-c" role="tabpanel" aria-labelledby="t-c" hidden>
+              <div class="side">
+                <figure class="ph"><img src="assets/media-1.jpg" alt="Dokumentasi media pembelajaran" loading="lazy"
+                    decoding="async">
+                  <figcaption><svg class="ic">
+                      <use href="#i-cam" />
+                    </svg><b>Foto dokumentasi</b><small>assets/media-1.jpg</small></figcaption>
+                </figure>
+                <div class="docchip">
+                  <span class="ftype" data-t="slide">SLIDE</span>
+                  <div><b>Media pembelajaran</b><small>Lampiran C</small></div>
+                  <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-c"><svg class="ic">
+                        <use href="#i-eye" />
+                      </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-c"><svg class="ic">
+                        <use href="#i-link" />
+                      </svg>Buka tautan</a></div>
+                </div>
+              </div>
+              <div class="info">
+                <div class="ihead"><span class="ico"><svg class="ic">
+                      <use href="#i-screen" />
+                    </svg></span>
+                  <div>
+                    <p class="sec-tag">Analisis C</p>
+                    <h3>Media pembelajaran</h3>
+                  </div>
+                </div>
+                <div class="ana">
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-compass" />
+                      </svg>Konteks</h4>
+                    <p><span class="todo">ISI: jenis media (slide, kuis digital, lembar kerja), alat yang dipakai, dan
+                        kapan digunakan</span></p>
+                  </div>
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-target" />
+                      </svg>Tujuan</h4>
+                    <p><span class="todo">ISI: peran media dalam membantu siswa memahami materi</span></p>
+                  </div>
+                </div>
+                <div class="pm">
+                  <div class="plus">
+                    <h4><svg class="ic">
+                        <use href="#i-check" />
+                      </svg>Kelebihan</h4>
+                    <ul>
+                      <li><span class="todo">ISI: kecocokan dengan karakter siswa</span></li>
+                      <li><span class="todo">ISI: dampak pada pemahaman dan partisipasi</span></li>
+                    </ul>
+                  </div>
+                  <div class="minus">
+                    <h4><svg class="ic">
+                        <use href="#i-alert" />
+                      </svg>Kekurangan</h4>
+                    <ul>
+                      <li><span class="todo">ISI: kendala teknis atau desain</span></li>
+                      <li><span class="todo">ISI: bagian media yang kurang membantu</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="teori">
+                  <h4><svg class="ic">
+                      <use href="#i-book" />
+                    </svg>Kajian teori</h4>
+                  <p><span class="todo">ISI: kaitkan dengan teori dari mata kuliah terintegrasi. Contoh: teori
+                      multimedia (Mayer), kerangka TPACK (Mishra dan Koehler)</span></p>
+                </div>
+                <div class="refl">
+                  <h4><svg class="ic">
+                      <use href="#i-refresh" />
+                    </svg>Tindak lanjut</h4>
+                  <p><span class="todo">ISI: perbaikan media untuk siklus berikutnya</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- D. VIDEO (siklus 1) -->
+            <div class="card panel" id="p-d" role="tabpanel" aria-labelledby="t-d" hidden>
+              <div class="side">
+                <div class="vid">
+                  <figure class="ph" style="--ar:16/9"><img src="assets/video-1.jpg" alt="Cuplikan video siklus 1"
+                      loading="lazy" decoding="async">
+                    <figcaption><svg class="ic">
+                        <use href="#i-cam" />
+                      </svg><b>Cuplikan video</b><small>assets/video-1.jpg</small></figcaption>
+                  </figure>
+                  <button class="play-btn" type="button" data-lamp="lamp-d"
+                    aria-label="Putar pratinjau video siklus 1"><svg class="ic">
+                      <use href="#i-play" />
+                    </svg></button>
+                </div>
+                <div class="docchip">
+                  <span class="ftype" data-t="video">VIDEO</span>
+                  <div><b>Video pelaksanaan siklus 1</b><small>Lampiran D</small></div>
+                  <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-d"><svg class="ic">
+                        <use href="#i-eye" />
+                      </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-d"><svg class="ic">
+                        <use href="#i-link" />
+                      </svg>Buka tautan</a></div>
+                </div>
+              </div>
+              <div class="info">
+                <div class="ihead"><span class="ico"><svg class="ic">
+                      <use href="#i-video" />
+                    </svg></span>
+                  <div>
+                    <p class="sec-tag">Analisis D · Siklus 1</p>
+                    <h3>Video pelaksanaan</h3>
+                  </div>
+                </div>
+                <div class="ana">
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-compass" />
+                      </svg>Konteks</h4>
+                    <p><span class="todo">ISI: topik, durasi, kelas, dan bagian video yang dianalisis (sebut
+                        menitnya)</span></p>
+                  </div>
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-target" />
+                      </svg>Tujuan</h4>
+                    <p><span class="todo">ISI: tujuan pembelajaran yang ingin dicapai pada pertemuan ini</span></p>
+                  </div>
+                </div>
+                <div class="pm">
+                  <div class="plus">
+                    <h4><svg class="ic">
+                        <use href="#i-check" />
+                      </svg>Kelebihan</h4>
+                    <ul>
+                      <li><span class="todo">ISI: alur pembukaan, inti, dan penutup (sebut menitnya)</span></li>
+                      <li><span class="todo">ISI: interaksi dan teknik bertanya</span></li>
+                    </ul>
+                  </div>
+                  <div class="minus">
+                    <h4><svg class="ic">
+                        <use href="#i-alert" />
+                      </svg>Kekurangan</h4>
+                    <ul>
+                      <li><span class="todo">ISI: pengelolaan waktu dan kelas</span></li>
+                      <li><span class="todo">ISI: respons siswa yang kurang tergali</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="teori">
+                  <h4><svg class="ic">
+                      <use href="#i-book" />
+                    </svg>Kajian teori</h4>
+                  <p><span class="todo">ISI: kaitkan dengan teori dari mata kuliah terintegrasi. Contoh: teknik bertanya
+                      berbasis taksonomi Bloom, pengelolaan kelas, praktik reflektif (Schön)</span></p>
+                </div>
+                <div class="refl">
+                  <h4><svg class="ic">
+                      <use href="#i-refresh" />
+                    </svg>Tindak lanjut</h4>
+                  <p><span class="todo">ISI: kesesuaian pelaksanaan dengan rancangan dan rencana untuk siklus
+                      berikutnya</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- E. NONMENGAJAR -->
+            <div class="card panel" id="p-e" role="tabpanel" aria-labelledby="t-e" hidden>
+              <div class="side">
+                <figure class="ph"><img src="assets/nonmengajar-1.jpg" alt="Dokumentasi kegiatan nonmengajar"
+                    loading="lazy" decoding="async">
+                  <figcaption><svg class="ic">
+                      <use href="#i-cam" />
+                    </svg><b>Foto dokumentasi</b><small>assets/nonmengajar-1.jpg</small></figcaption>
+                </figure>
+                <div class="docchip">
+                  <span class="ftype" data-t="pdf">PDF</span>
+                  <div><b>Dokumentasi nonmengajar</b><small>Lampiran E</small></div>
+                  <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-e"><svg class="ic">
+                        <use href="#i-eye" />
+                      </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-e"><svg class="ic">
+                        <use href="#i-link" />
+                      </svg>Buka tautan</a></div>
+                </div>
+              </div>
+              <div class="info">
+                <div class="ihead"><span class="ico"><svg class="ic">
+                      <use href="#i-users" />
+                    </svg></span>
+                  <div>
+                    <p class="sec-tag">Analisis E</p>
+                    <h3>Kegiatan nonmengajar</h3>
+                  </div>
+                </div>
+                <div class="ana">
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-compass" />
+                      </svg>Konteks</h4>
+                    <p><span class="todo">ISI: kegiatan yang diikuti (piket, pendampingan, rapat guru, atau lainnya) dan
+                        peran saya</span></p>
+                  </div>
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-target" />
+                      </svg>Tujuan</h4>
+                    <p><span class="todo">ISI: tujuan kegiatan bagi sekolah dan bagi pengembangan kompetensi saya</span>
+                    </p>
+                  </div>
+                </div>
+                <div class="pm">
+                  <div class="plus">
+                    <h4><svg class="ic">
+                        <use href="#i-check" />
+                      </svg>Kelebihan</h4>
+                    <ul>
+                      <li><span class="todo">ISI: pembelajaran tentang budaya sekolah</span></li>
+                      <li><span class="todo">ISI: kompetensi guru yang terasah</span></li>
+                    </ul>
+                  </div>
+                  <div class="minus">
+                    <h4><svg class="ic">
+                        <use href="#i-alert" />
+                      </svg>Kekurangan</h4>
+                    <ul>
+                      <li><span class="todo">ISI: tantangan yang dihadapi</span></li>
+                      <li><span class="todo">ISI: hal yang belum sempat saya ikuti</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="teori">
+                  <h4><svg class="ic">
+                      <use href="#i-book" />
+                    </svg>Kajian teori</h4>
+                  <p><span class="todo">ISI: kaitkan dengan teori dari mata kuliah terintegrasi. Contoh: empat
+                      kompetensi guru (pedagogik, profesional, kepribadian, sosial), komunitas belajar
+                      profesional</span></p>
+                </div>
+                <div class="refl">
+                  <h4><svg class="ic">
+                      <use href="#i-refresh" />
+                    </svg>Tindak lanjut</h4>
+                  <p><span class="todo">ISI: kegiatan sekolah yang ingin saya ikuti dan kembangkan berikutnya</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- F. INSTRUMEN PENILAIAN -->
+            <div class="card panel" id="p-f" role="tabpanel" aria-labelledby="t-f" hidden>
+              <div class="side">
+                <figure class="ph"><img src="assets/instrumen-1.jpg" alt="Dokumentasi instrumen penilaian"
+                    loading="lazy" decoding="async">
+                  <figcaption><svg class="ic">
+                      <use href="#i-cam" />
+                    </svg><b>Foto dokumentasi</b><small>assets/instrumen-1.jpg</small></figcaption>
+                </figure>
+                <div class="docchip">
+                  <span class="ftype" data-t="doc">DOC</span>
+                  <div><b>Instrumen penilaian</b><small>Lampiran F</small></div>
+                  <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-f"><svg class="ic">
+                        <use href="#i-eye" />
+                      </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-f"><svg class="ic">
+                        <use href="#i-link" />
+                      </svg>Buka tautan</a></div>
+                </div>
+              </div>
+              <div class="info">
+                <div class="ihead"><span class="ico"><svg class="ic">
+                      <use href="#i-filecheck" />
+                    </svg></span>
+                  <div>
+                    <p class="sec-tag">Analisis F</p>
+                    <h3>Instrumen penilaian</h3>
+                  </div>
+                </div>
+                <div class="ana">
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-compass" />
+                      </svg>Konteks</h4>
+                    <p><span class="todo">ISI: jenis instrumen (tes, rubrik, observasi), materi yang dinilai, dan waktu
+                        penggunaan</span></p>
+                  </div>
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-target" />
+                      </svg>Tujuan</h4>
+                    <p><span class="todo">ISI: capaian pembelajaran yang diukur oleh instrumen</span></p>
+                  </div>
+                </div>
+                <div class="pm">
+                  <div class="plus">
+                    <h4><svg class="ic">
+                        <use href="#i-check" />
+                      </svg>Kelebihan</h4>
+                    <ul>
+                      <li><span class="todo">ISI: kesesuaian butir dengan tujuan pembelajaran</span></li>
+                      <li><span class="todo">ISI: kejelasan rubrik atau kunci penilaian</span></li>
+                    </ul>
+                  </div>
+                  <div class="minus">
+                    <h4><svg class="ic">
+                        <use href="#i-alert" />
+                      </svg>Kekurangan</h4>
+                    <ul>
+                      <li><span class="todo">ISI: butir yang kurang valid atau kurang terbaca</span></li>
+                      <li><span class="todo">ISI: aspek yang belum terukur</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="teori">
+                  <h4><svg class="ic">
+                      <use href="#i-book" />
+                    </svg>Kajian teori</h4>
+                  <p><span class="todo">ISI: kaitkan dengan teori dari mata kuliah terintegrasi. Contoh: asesmen
+                      formatif (Black dan Wiliam), validitas dan reliabilitas instrumen, rubrik analitik</span></p>
+                </div>
+                <div class="refl">
+                  <h4><svg class="ic">
+                      <use href="#i-refresh" />
+                    </svg>Tindak lanjut</h4>
+                  <p><span class="todo">ISI: ringkasan hasil siswa dan langkah perbaikan instrumen</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- G. HASIL KERJA SISWA -->
+            <div class="card panel" id="p-g" role="tabpanel" aria-labelledby="t-g" hidden>
+              <div class="side">
+                <figure class="ph"><img src="assets/hasil-siswa-1.jpg" alt="Contoh hasil kerja siswa" loading="lazy"
+                    decoding="async">
+                  <figcaption><svg class="ic">
+                      <use href="#i-cam" />
+                    </svg><b>Foto dokumentasi</b><small>assets/hasil-siswa-1.jpg</small></figcaption>
+                </figure>
+                <div class="docchip">
+                  <span class="ftype" data-t="pdf">PDF</span>
+                  <div><b>Contoh hasil kerja siswa</b><small>Lampiran G</small></div>
+                  <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-g"><svg class="ic">
+                        <use href="#i-eye" />
+                      </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-g"><svg class="ic">
+                        <use href="#i-link" />
+                      </svg>Buka tautan</a></div>
+                </div>
+              </div>
+              <div class="info">
+                <div class="ihead"><span class="ico"><svg class="ic">
+                      <use href="#i-pencil" />
+                    </svg></span>
+                  <div>
+                    <p class="sec-tag">Analisis G</p>
+                    <h3>Hasil kerja siswa</h3>
+                  </div>
+                </div>
+                <div class="ana">
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-compass" />
+                      </svg>Konteks</h4>
+                    <p><span class="todo">ISI: jenis hasil kerja (lembar kerja, proyek, kuis) dan alasan memilih contoh
+                        ini. Samarkan nama siswa</span></p>
+                  </div>
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-target" />
+                      </svg>Tujuan</h4>
+                    <p><span class="todo">ISI: apa yang ditunjukkan hasil kerja ini tentang pemahaman siswa</span></p>
+                  </div>
+                </div>
+                <div class="pm">
+                  <div class="plus">
+                    <h4><svg class="ic">
+                        <use href="#i-check" />
+                      </svg>Kelebihan</h4>
+                    <ul>
+                      <li><span class="todo">ISI: bukti ketercapaian tujuan pembelajaran</span></li>
+                      <li><span class="todo">ISI: kreativitas atau kemajuan siswa</span></li>
+                    </ul>
+                  </div>
+                  <div class="minus">
+                    <h4><svg class="ic">
+                        <use href="#i-alert" />
+                      </svg>Kekurangan</h4>
+                    <ul>
+                      <li><span class="todo">ISI: miskonsepsi yang muncul</span></li>
+                      <li><span class="todo">ISI: siswa yang belum mencapai tujuan</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="teori">
+                  <h4><svg class="ic">
+                      <use href="#i-book" />
+                    </svg>Kajian teori</h4>
+                  <p><span class="todo">ISI: kaitkan dengan teori dari mata kuliah terintegrasi. Contoh: umpan balik
+                      (Hattie dan Timperley), pembelajaran berdiferensiasi (Tomlinson)</span></p>
+                </div>
+                <div class="refl">
+                  <h4><svg class="ic">
+                      <use href="#i-refresh" />
+                    </svg>Tindak lanjut</h4>
+                  <p><span class="todo">ISI: cara menindaklanjuti miskonsepsi dan siswa yang belum tuntas</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- H. PENILAIAN GP DAN DPL -->
+            <div class="card panel" id="p-h" role="tabpanel" aria-labelledby="t-h" hidden>
+              <div class="side">
+                <figure class="ph"><img src="assets/penilaian-1.jpg" alt="Dokumentasi penilaian guru pamong dan DPL"
+                    loading="lazy" decoding="async">
+                  <figcaption><svg class="ic">
+                      <use href="#i-cam" />
+                    </svg><b>Foto dokumentasi</b><small>assets/penilaian-1.jpg</small></figcaption>
+                </figure>
+                <div class="docchip">
+                  <span class="ftype" data-t="pdf">PDF</span>
+                  <div><b>Penilaian GP dan DPL</b><small>Lampiran H</small></div>
+                  <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-h"><svg class="ic">
+                        <use href="#i-eye" />
+                      </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-h"><svg class="ic">
+                        <use href="#i-link" />
+                      </svg>Buka tautan</a></div>
+                </div>
+              </div>
+              <div class="info">
+                <div class="ihead"><span class="ico"><svg class="ic">
+                      <use href="#i-award" />
+                    </svg></span>
+                  <div>
+                    <p class="sec-tag">Analisis H</p>
+                    <h3>Penilaian GP dan DPL</h3>
+                  </div>
+                </div>
+                <div class="ana">
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-compass" />
+                      </svg>Konteks</h4>
+                    <p><span class="todo">ISI: bentuk penilaian atau lembar observasi dari guru pamong dan DPL, serta
+                        kapan diberikan</span></p>
+                  </div>
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-target" />
+                      </svg>Tujuan</h4>
+                    <p><span class="todo">ISI: aspek yang dinilai dan manfaatnya bagi pengembangan praktik mengajar
+                        saya</span></p>
+                  </div>
+                </div>
+                <div class="pm">
+                  <div class="plus">
+                    <h4><svg class="ic">
+                        <use href="#i-check" />
+                      </svg>Kelebihan</h4>
+                    <ul>
+                      <li><span class="todo">ISI: kekuatan yang diakui GP dan DPL</span></li>
+                      <li><span class="todo">ISI: bukti perkembangan antarsiklus</span></li>
+                    </ul>
+                  </div>
+                  <div class="minus">
+                    <h4><svg class="ic">
+                        <use href="#i-alert" />
+                      </svg>Kekurangan</h4>
+                    <ul>
+                      <li><span class="todo">ISI: masukan dan catatan perbaikan dari GP dan DPL</span></li>
+                      <li><span class="todo">ISI: aspek yang masih lemah</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="teori">
+                  <h4><svg class="ic">
+                      <use href="#i-book" />
+                    </svg>Kajian teori</h4>
+                  <p><span class="todo">ISI: kaitkan dengan teori dari mata kuliah terintegrasi. Contoh: praktik
+                      reflektif (Schön), umpan balik dari mentor dan rekan sejawat</span></p>
+                </div>
+                <div class="refl">
+                  <h4><svg class="ic">
+                      <use href="#i-refresh" />
+                    </svg>Tindak lanjut</h4>
+                  <p><span class="todo">ISI: cara saya menindaklanjuti setiap masukan</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- PITA 02: E-PORTFOLIO 2 -->
+  <div class="band-wrap" id="band2">
+    <div class="band-hd">
+      <button class="band honey" type="button" aria-expanded="true" aria-controls="band2-body">
+        <span class="band-num">02</span>
+        <span class="band-txt"><small>E-Portfolio 2 · UAS</small><b>Siklus 2 sampai 4: Rancangan dan Video
+            Terbaik</b></span>
+        <span class="chev"><svg class="ic">
+            <use href="#i-chev" />
+          </svg></span>
+      </button>
+    </div>
+    <div class="band-body" id="band2-body">
+      <div>
+
+        <section class="sec alt" id="porto2" data-nav>
+          <div class="sec-in">
+            <div class="sec-head">
+              <p class="sec-tag"><span class="tg"><svg class="ic">
+                    <use href="#i-layers" />
+                  </svg></span>E-Portfolio 2</p>
+              <h2 class="sec-h">Tiga siklus, satu <em>perkembangan</em></h2>
+              <p class="sec-desc">Ringkasan siklus 2 sampai 4, lalu produk perencanaan lengkap terbaik beserta video
+                pelaksanaannya.</p>
+            </div>
+            <div class="sk-grid">
+              <article class="card sk lift">
+                <div class="sk-top"><span class="ico"><svg class="ic">
+                      <use href="#i-cal" />
+                    </svg></span><span class="sk-badge">Siklus 2</span></div>
+                <dl>
+                  <div>
+                    <dt>Topik</dt>
+                    <dd><span class="todo">ISI</span></dd>
+                  </div>
+                  <div>
+                    <dt>Pendekatan</dt>
+                    <dd><span class="todo">ISI</span></dd>
+                  </div>
+                  <div>
+                    <dt>Temuan utama</dt>
+                    <dd><span class="todo">ISI</span></dd>
+                  </div>
+                </dl>
+              </article>
+              <article class="card sk lift">
+                <div class="sk-top"><span class="ico"><svg class="ic">
+                      <use href="#i-cal" />
+                    </svg></span><span class="sk-badge">Siklus 3</span></div>
+                <dl>
+                  <div>
+                    <dt>Topik</dt>
+                    <dd><span class="todo">ISI</span></dd>
+                  </div>
+                  <div>
+                    <dt>Pendekatan</dt>
+                    <dd><span class="todo">ISI</span></dd>
+                  </div>
+                  <div>
+                    <dt>Temuan utama</dt>
+                    <dd><span class="todo">ISI</span></dd>
+                  </div>
+                </dl>
+              </article>
+              <article class="card sk lift">
+                <div class="sk-top"><span class="ico"><svg class="ic">
+                      <use href="#i-cal" />
+                    </svg></span><span class="sk-badge">Siklus 4</span></div>
+                <dl>
+                  <div>
+                    <dt>Topik</dt>
+                    <dd><span class="todo">ISI</span></dd>
+                  </div>
+                  <div>
+                    <dt>Pendekatan</dt>
+                    <dd><span class="todo">ISI</span></dd>
+                  </div>
+                  <div>
+                    <dt>Temuan utama</dt>
+                    <dd><span class="todo">ISI</span></dd>
+                  </div>
+                </dl>
+              </article>
+            </div>
+
+            <div class="sec-head" style="margin-top:1rem">
+              <p class="sec-tag"><span class="tg"><svg class="ic">
+                    <use href="#i-star" />
+                  </svg></span>Produk terbaik</p>
+              <h2 class="sec-h">Rancangan dan video <em>terbaik</em></h2>
+              <p class="sec-desc">Siklus terpilih: <span class="todo">ISI: siklus 2, 3, atau 4</span>. Alasan pemilihan
+                dijelaskan pada bagian Konteks.</p>
+            </div>
+            <div class="tabs" role="tablist" aria-label="Produk terbaik siklus 2 sampai 4">
+              <button class="tab" role="tab" id="t-i" aria-controls="p-i" aria-selected="true" type="button"><svg
+                  class="ic">
+                  <use href="#i-clip" />
+                </svg>Rancangan terbaik</button>
+              <button class="tab" role="tab" id="t-j" aria-controls="p-j" aria-selected="false" tabindex="-1"
+                type="button"><svg class="ic">
+                  <use href="#i-video" />
+                </svg>Video pelaksanaan</button>
+            </div>
+
+            <!-- I. RANCANGAN TERBAIK SIKLUS 2-4 -->
+            <div class="card panel" id="p-i" role="tabpanel" aria-labelledby="t-i">
+              <div class="side">
+                <figure class="ph"><img src="assets/terbaik-rpp.jpg" alt="Dokumentasi rancangan terbaik" loading="lazy"
+                    decoding="async">
+                  <figcaption><svg class="ic">
+                      <use href="#i-cam" />
+                    </svg><b>Foto dokumentasi</b><small>assets/terbaik-rpp.jpg</small></figcaption>
+                </figure>
+                <div class="docchip">
+                  <span class="ftype" data-t="doc">DOC</span>
+                  <div><b>Modul ajar siklus terbaik</b><small>Lampiran I</small></div>
+                  <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-i"><svg class="ic">
+                        <use href="#i-eye" />
+                      </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-i"><svg class="ic">
+                        <use href="#i-link" />
+                      </svg>Buka tautan</a></div>
+                </div>
+              </div>
+              <div class="info">
+                <div class="ihead"><span class="ico"><svg class="ic">
+                      <use href="#i-clip" />
+                    </svg></span>
+                  <div>
+                    <p class="sec-tag">Siklus 2 sampai 4</p>
+                    <h3>Rancangan terbaik</h3>
+                  </div>
+                </div>
+                <div class="ana">
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-compass" />
+                      </svg>Konteks</h4>
+                    <p><span class="todo">ISI: siklus terpilih, topik, fase, dan alasan memilihnya, disertai bukti dari
+                        hasil belajar siswa dan catatan observasi</span></p>
+                  </div>
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-target" />
+                      </svg>Tujuan</h4>
+                    <p><span class="todo">ISI: tujuan pembelajaran dan capaian siswa</span></p>
+                  </div>
+                </div>
+                <div class="pm">
+                  <div class="plus">
+                    <h4><svg class="ic">
+                        <use href="#i-check" />
+                      </svg>Kelebihan</h4>
+                    <ul>
+                      <li><span class="todo">ISI: komponen yang kuat (tujuan, asesmen, kegiatan, media,
+                          diferensiasi)</span></li>
+                      <li><span class="todo">ISI: perkembangan dibandingkan siklus 1</span></li>
+                    </ul>
+                  </div>
+                  <div class="minus">
+                    <h4><svg class="ic">
+                        <use href="#i-alert" />
+                      </svg>Kekurangan</h4>
+                    <ul>
+                      <li><span class="todo">ISI: bagian yang masih perlu diperbaiki</span></li>
+                      <li><span class="todo">ISI: kendala saat pelaksanaan</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="teori">
+                  <h4><svg class="ic">
+                      <use href="#i-book" />
+                    </svg>Kajian teori</h4>
+                  <p><span class="todo">ISI: kaitkan dengan teori dari mata kuliah terintegrasi. Contoh: Backward
+                      Design, Project Based Learning, pembelajaran berdiferensiasi</span></p>
+                </div>
+                <div class="refl">
+                  <h4><svg class="ic">
+                      <use href="#i-refresh" />
+                    </svg>Tindak lanjut</h4>
+                  <p><span class="todo">ISI: rencana penerapan rancangan ini pada pembelajaran selanjutnya</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- J. VIDEO TERBAIK SIKLUS 2-4 -->
+            <div class="card panel" id="p-j" role="tabpanel" aria-labelledby="t-j" hidden>
+              <div class="side">
+                <div class="vid">
+                  <figure class="ph" style="--ar:16/9"><img src="assets/terbaik-video.jpg" alt="Cuplikan video terbaik"
+                      loading="lazy" decoding="async">
+                    <figcaption><svg class="ic">
+                        <use href="#i-cam" />
+                      </svg><b>Cuplikan video</b><small>assets/terbaik-video.jpg</small></figcaption>
+                  </figure>
+                  <button class="play-btn" type="button" data-lamp="lamp-j"
+                    aria-label="Putar pratinjau video siklus terbaik"><svg class="ic">
+                      <use href="#i-play" />
+                    </svg></button>
+                </div>
+                <div class="docchip">
+                  <span class="ftype" data-t="video">VIDEO</span>
+                  <div><b>Video siklus terbaik</b><small>Lampiran J</small></div>
+                  <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-j"><svg class="ic">
+                        <use href="#i-eye" />
+                      </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-j"><svg class="ic">
+                        <use href="#i-link" />
+                      </svg>Buka tautan</a></div>
+                </div>
+              </div>
+              <div class="info">
+                <div class="ihead"><span class="ico"><svg class="ic">
+                      <use href="#i-video" />
+                    </svg></span>
+                  <div>
+                    <p class="sec-tag">Siklus 2 sampai 4</p>
+                    <h3>Video pelaksanaan</h3>
+                  </div>
+                </div>
+                <div class="ana">
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-compass" />
+                      </svg>Konteks</h4>
+                    <p><span class="todo">ISI: topik, durasi, kelas, dan bagian video yang dianalisis (sebut
+                        menitnya)</span></p>
+                  </div>
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-target" />
+                      </svg>Tujuan</h4>
+                    <p><span class="todo">ISI: tujuan pembelajaran pada pertemuan ini</span></p>
+                  </div>
+                </div>
+                <div class="pm">
+                  <div class="plus">
+                    <h4><svg class="ic">
+                        <use href="#i-check" />
+                      </svg>Kelebihan</h4>
+                    <ul>
+                      <li><span class="todo">ISI: kekuatan pelaksanaan, dengan bukti dari video</span></li>
+                      <li><span class="todo">ISI: perkembangan dibandingkan video siklus 1</span></li>
+                    </ul>
+                  </div>
+                  <div class="minus">
+                    <h4><svg class="ic">
+                        <use href="#i-alert" />
+                      </svg>Kekurangan</h4>
+                    <ul>
+                      <li><span class="todo">ISI: kelemahan pelaksanaan, dengan bukti dari video</span></li>
+                      <li><span class="todo">ISI: kesenjangan antara rancangan dan pelaksanaan</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="teori">
+                  <h4><svg class="ic">
+                      <use href="#i-book" />
+                    </svg>Kajian teori</h4>
+                  <p><span class="todo">ISI: kaitkan dengan teori dari mata kuliah terintegrasi. Contoh: pengelolaan
+                      kelas, umpan balik (Hattie dan Timperley), praktik reflektif (Schön)</span></p>
+                </div>
+                <div class="refl">
+                  <h4><svg class="ic">
+                      <use href="#i-refresh" />
+                    </svg>Tindak lanjut</h4>
+                  <p><span class="todo">ISI: yang akan dipertahankan dan diperbaiki pada praktik mengajar
+                      berikutnya</span></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card rc lift">
+              <div class="rc-top"><span class="ico sm"><svg class="ic">
+                    <use href="#i-refresh" />
+                  </svg></span>
+                <h4>Perkembangan</h4>
+              </div>
+              <h3>Dari siklus 1 hingga siklus terbaik</h3>
+              <p><span class="todo">ISI: perubahan praktik mengajar yang terlihat dari siklus 1 sampai siklus 4 dan
+                  penyebabnya</span></p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- REFLEKSI -->
+  <section class="sec dark" id="refleksi" data-nav>
+    <div class="sec-in">
+      <div class="sec-head">
+        <p class="sec-tag"><span class="tg"><svg class="ic">
+              <use href="#i-bulb" />
+            </svg></span>Refleksi</p>
+        <h2 class="sec-h">Dari praktik menuju <em>pengembangan diri</em></h2>
+        <p class="sec-desc">Tiga refleksi atas praktik mengajar mandiri. Masing-masing menyebutkan kekuatan, kelemahan,
+          dan rencana tindak lanjut.</p>
+      </div>
+      <div class="rf-list">
+
+        <article class="rf">
+          <div class="rf-head"><span class="ico"><svg class="ic">
+                <use href="#i-star" />
+              </svg></span><span class="lab">Refleksi 1</span>
+            <h3>Model guru yang dituju</h3>
+            <p><span class="todo">ISI: sosok guru Informatika yang ingin saya wujudkan, dengan dua atau tiga ciri
+                utamanya</span></p>
+          </div>
+          <div class="rf-cols">
+            <div class="rf-col">
+              <h4><svg class="ic">
+                  <use href="#i-check" />
+                </svg>Kekuatan</h4>
+              <p><span class="todo">ISI: ciri model guru yang sudah saya miliki, dengan bukti dari praktik</span></p>
+            </div>
+            <div class="rf-col">
+              <h4><svg class="ic">
+                  <use href="#i-alert" />
+                </svg>Kelemahan</h4>
+              <p><span class="todo">ISI: jarak antara model guru yang dituju dan praktik saya saat ini</span></p>
+            </div>
+            <div class="rf-col">
+              <h4><svg class="ic">
+                  <use href="#i-refresh" />
+                </svg>Rencana tindak lanjut</h4>
+              <p><span class="todo">ISI: langkah konkret, target, dan waktu pelaksanaan</span></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="rf">
+          <div class="rf-head"><span class="ico"><svg class="ic">
+                <use href="#i-bulb" />
+              </svg></span><span class="lab">Refleksi 2</span>
+            <h3>Filosofi mengajar</h3>
+            <p><span class="todo">ISI: keyakinan saya tentang cara siswa belajar Informatika dan peran guru</span></p>
+          </div>
+          <div class="rf-cols">
+            <div class="rf-col">
+              <h4><svg class="ic">
+                  <use href="#i-check" />
+                </svg>Kekuatan</h4>
+              <p><span class="todo">ISI: nilai yang tampak konsisten dalam praktik mengajar saya</span></p>
+            </div>
+            <div class="rf-col">
+              <h4><svg class="ic">
+                  <use href="#i-alert" />
+                </svg>Kelemahan</h4>
+              <p><span class="todo">ISI: nilai yang belum terwujud di kelas</span></p>
+            </div>
+            <div class="rf-col">
+              <h4><svg class="ic">
+                  <use href="#i-refresh" />
+                </svg>Rencana tindak lanjut</h4>
+              <p><span class="todo">ISI: cara saya menyelaraskan filosofi dengan praktik</span></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="rf">
+          <div class="rf-head"><span class="ico"><svg class="ic">
+                <use href="#i-msg" />
+              </svg></span><span class="lab">Refleksi 3</span>
+            <h3>Refleksi akhir PPL Mandiri</h3>
+            <p><span class="todo">ISI: ringkasan perjalanan siklus 1 sampai 4 dan pelajaran terpenting</span></p>
+          </div>
+          <div class="rf-cols">
+            <div class="rf-col">
+              <h4><svg class="ic">
+                  <use href="#i-check" />
+                </svg>Kekuatan</h4>
+              <p><span class="todo">ISI: hal yang berkembang selama praktik, dengan contoh</span></p>
+            </div>
+            <div class="rf-col">
+              <h4><svg class="ic">
+                  <use href="#i-alert" />
+                </svg>Kelemahan</h4>
+              <p><span class="todo">ISI: hal yang masih perlu ditingkatkan</span></p>
+            </div>
+            <div class="rf-col">
+              <h4><svg class="ic">
+                  <use href="#i-refresh" />
+                </svg>Rencana tindak lanjut</h4>
+              <p><span class="todo">ISI: rencana pengembangan diri setelah PPL Mandiri</span></p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LAMPIRAN DOKUMEN -->
+  <!-- CARA ISI: tempel tautan Google Drive, Docs, Slides, atau YouTube pada atribut data-doc="" di tiap kartu.
+     Tautan Drive harus dibagikan sebagai "Siapa saja yang memiliki link" agar pratinjau tampil. -->
+  <section class="sec" id="lampiran" data-nav>
+    <div class="sec-in">
+      <div class="sec-head">
+        <p class="sec-tag"><span class="tg"><svg class="ic">
+              <use href="#i-file" />
+            </svg></span>Lampiran dokumen</p>
+        <h2 class="sec-h">Semua berkas, <em>bisa dipratinjau</em></h2>
+        <p class="sec-desc">Klik Pratinjau untuk membuka dokumen di jendela ini, atau Buka tautan untuk melihatnya di
+          tab baru.</p>
+      </div>
+      <div class="fchips" id="fchips">
+        <button class="fchip" type="button" data-f="all" aria-pressed="true">Semua</button>
+        <button class="fchip" type="button" data-f="p1" aria-pressed="false">E-Portfolio 1</button>
+        <button class="fchip" type="button" data-f="p2" aria-pressed="false">E-Portfolio 2</button>
+      </div>
+      <div class="lamp-grid">
+
+        <article class="card lamp lift" id="lamp-a" data-group="p1" data-title="Modul ajar siklus 1" data-doc="">
+          <div class="paper" aria-hidden="true"><span class="ftype" data-t="doc">DOC</span></div>
+          <div class="lamp-body"><span class="lab"><svg class="ic">
+                <use href="#i-clip" />
+              </svg>E-Portfolio 1 · A</span>
+            <h3>Modul ajar siklus 1</h3>
+            <p>Perencanaan lengkap terbaik dari siklus 1.</p><span class="empty-chip">Tautan belum diisi</span>
+            <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-a"><svg class="ic">
+                  <use href="#i-eye" />
+                </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-a"><svg class="ic">
+                  <use href="#i-link" />
+                </svg>Buka tautan</a></div>
+          </div>
+        </article>
+
+        <article class="card lamp lift" id="lamp-b" data-group="p1" data-title="Materi pembelajaran" data-doc="">
+          <div class="paper" aria-hidden="true"><span class="ftype" data-t="doc">DOC</span></div>
+          <div class="lamp-body"><span class="lab"><svg class="ic">
+                <use href="#i-layers" />
+              </svg>E-Portfolio 1 · B</span>
+            <h3>Materi pembelajaran</h3>
+            <p>Materi yang disusun dan diterapkan saat praktik.</p><span class="empty-chip">Tautan belum diisi</span>
+            <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-b"><svg class="ic">
+                  <use href="#i-eye" />
+                </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-b"><svg class="ic">
+                  <use href="#i-link" />
+                </svg>Buka tautan</a></div>
+          </div>
+        </article>
+
+        <article class="card lamp lift" id="lamp-c" data-group="p1" data-title="Media pembelajaran" data-doc="">
+          <div class="paper" aria-hidden="true"><span class="ftype" data-t="slide">SLIDE</span></div>
+          <div class="lamp-body"><span class="lab"><svg class="ic">
+                <use href="#i-screen" />
+              </svg>E-Portfolio 1 · C</span>
+            <h3>Media pembelajaran</h3>
+            <p>Slide, kuis digital, atau lembar kerja yang dipakai di kelas.</p><span class="empty-chip">Tautan belum
+              diisi</span>
+            <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-c"><svg class="ic">
+                  <use href="#i-eye" />
+                </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-c"><svg class="ic">
+                  <use href="#i-link" />
+                </svg>Buka tautan</a></div>
+          </div>
+        </article>
+
+        <article class="card lamp lift" id="lamp-d" data-group="p1" data-title="Video pelaksanaan siklus 1" data-doc="">
+          <div class="paper" aria-hidden="true"><span class="ftype" data-t="video">VIDEO</span></div>
+          <div class="lamp-body"><span class="lab"><svg class="ic">
+                <use href="#i-video" />
+              </svg>E-Portfolio 1 · D</span>
+            <h3>Video pelaksanaan siklus 1</h3>
+            <p>Rekaman praktik mengajar dari rancangan terbaik siklus 1.</p><span class="empty-chip">Tautan belum
+              diisi</span>
+            <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-d"><svg class="ic">
+                  <use href="#i-eye" />
+                </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-d"><svg class="ic">
+                  <use href="#i-link" />
+                </svg>Buka tautan</a></div>
+          </div>
+        </article>
+
+        <article class="card lamp lift" id="lamp-e" data-group="p1" data-title="Dokumentasi kegiatan nonmengajar"
+          data-doc="">
+          <div class="paper" aria-hidden="true"><span class="ftype" data-t="pdf">PDF</span></div>
+          <div class="lamp-body"><span class="lab"><svg class="ic">
+                <use href="#i-users" />
+              </svg>E-Portfolio 1 · E</span>
+            <h3>Dokumentasi nonmengajar</h3>
+            <p>Bukti keterlibatan dalam kegiatan sekolah di luar jam mengajar.</p><span class="empty-chip">Tautan belum
+              diisi</span>
+            <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-e"><svg class="ic">
+                  <use href="#i-eye" />
+                </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-e"><svg class="ic">
+                  <use href="#i-link" />
+                </svg>Buka tautan</a></div>
+          </div>
+        </article>
+
+        <article class="card lamp lift" id="lamp-f" data-group="p1" data-title="Instrumen penilaian" data-doc="">
+          <div class="paper" aria-hidden="true"><span class="ftype" data-t="doc">DOC</span></div>
+          <div class="lamp-body"><span class="lab"><svg class="ic">
+                <use href="#i-filecheck" />
+              </svg>E-Portfolio 1 · F</span>
+            <h3>Instrumen penilaian</h3>
+            <p>Instrumen yang dirancang beserta rubrik atau kunci penilaiannya.</p><span class="empty-chip">Tautan belum
+              diisi</span>
+            <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-f"><svg class="ic">
+                  <use href="#i-eye" />
+                </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-f"><svg class="ic">
+                  <use href="#i-link" />
+                </svg>Buka tautan</a></div>
+          </div>
+        </article>
+
+        <article class="card lamp lift" id="lamp-g" data-group="p1" data-title="Contoh hasil kerja siswa" data-doc="">
+          <div class="paper" aria-hidden="true"><span class="ftype" data-t="pdf">PDF</span></div>
+          <div class="lamp-body"><span class="lab"><svg class="ic">
+                <use href="#i-pencil" />
+              </svg>E-Portfolio 1 · G</span>
+            <h3>Contoh hasil kerja siswa</h3>
+            <p>Hasil kerja siswa yang dipilih, dengan nama siswa disamarkan.</p><span class="empty-chip">Tautan belum
+              diisi</span>
+            <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-g"><svg class="ic">
+                  <use href="#i-eye" />
+                </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-g"><svg class="ic">
+                  <use href="#i-link" />
+                </svg>Buka tautan</a></div>
+          </div>
+        </article>
+
+        <article class="card lamp lift" id="lamp-h" data-group="p1" data-title="Penilaian guru pamong dan DPL"
+          data-doc="">
+          <div class="paper" aria-hidden="true"><span class="ftype" data-t="pdf">PDF</span></div>
+          <div class="lamp-body"><span class="lab"><svg class="ic">
+                <use href="#i-award" />
+              </svg>E-Portfolio 1 · H</span>
+            <h3>Penilaian GP dan DPL</h3>
+            <p>Lembar penilaian atau observasi dari guru pamong dan DPL.</p><span class="empty-chip">Tautan belum
+              diisi</span>
+            <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-h"><svg class="ic">
+                  <use href="#i-eye" />
+                </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-h"><svg class="ic">
+                  <use href="#i-link" />
+                </svg>Buka tautan</a></div>
+          </div>
+        </article>
+
+        <article class="card lamp lift" id="lamp-i" data-group="p2"
+          data-title="Modul ajar siklus terbaik (siklus 2 sampai 4)" data-doc="">
+          <div class="paper" aria-hidden="true"><span class="ftype" data-t="doc">DOC</span></div>
+          <div class="lamp-body"><span class="lab"><svg class="ic">
+                <use href="#i-clip" />
+              </svg>E-Portfolio 2 · I</span>
+            <h3>Modul ajar siklus terbaik</h3>
+            <p>Perencanaan lengkap terbaik dari siklus 2 sampai 4.</p><span class="empty-chip">Tautan belum diisi</span>
+            <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-i"><svg class="ic">
+                  <use href="#i-eye" />
+                </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-i"><svg class="ic">
+                  <use href="#i-link" />
+                </svg>Buka tautan</a></div>
+          </div>
+        </article>
+
+        <article class="card lamp lift" id="lamp-j" data-group="p2" data-title="Video pelaksanaan siklus terbaik"
+          data-doc="">
+          <div class="paper" aria-hidden="true"><span class="ftype" data-t="video">VIDEO</span></div>
+          <div class="lamp-body"><span class="lab"><svg class="ic">
+                <use href="#i-video" />
+              </svg>E-Portfolio 2 · J</span>
+            <h3>Video siklus terbaik</h3>
+            <p>Rekaman pelaksanaan dari rancangan yang dipilih.</p><span class="empty-chip">Tautan belum diisi</span>
+            <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-j"><svg class="ic">
+                  <use href="#i-eye" />
+                </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-j"><svg class="ic">
+                  <use href="#i-link" />
+                </svg>Buka tautan</a></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAK -->
+  <section class="sec alt" id="kontak" data-nav>
+    <div class="sec-in">
+      <div class="sec-head">
+        <p class="sec-tag"><span class="tg"><svg class="ic">
+              <use href="#i-mail" />
+            </svg></span>Kontak</p>
+        <h2 class="sec-h">Mari <em>berdiskusi</em></h2>
+        <p class="sec-desc">Saran dan masukan atas portofolio ini sangat berarti bagi pengembangan praktik mengajar
+          saya.</p>
+      </div>
+      <div class="kgrid">
+        <a class="card kc lift" href="mailto:hafidzruzaini@gmail.com"><span class="ico"><svg class="ic">
+              <use href="#i-mail" />
+            </svg></span><span><small>Email</small><b>hafidzruzaini@gmail.com</b></span><svg class="ic go">
+            <use href="#i-arrow" />
+          </svg></a>
+        <a class="card kc lift" href="https://www.instagram.com/hafidzr3/" target="_blank" rel="noopener"><span
+            class="ico"><svg class="ic">
+              <use href="#i-insta" />
+            </svg></span><span><small>Instagram</small><b>@hafidzr3</b></span><svg class="ic go">
+            <use href="#i-arrow" />
+          </svg></a>
+        <a class="card kc lift" href="https://hafidz18.github.io/e-portofolio-ppg/" target="_blank" rel="noopener"><span
+            class="ico honey"><svg class="ic">
+              <use href="#i-layers" />
+            </svg></span><span><small>Portofolio semester 1</small><b>hafidz18.github.io/e-portofolio-ppg</b></span><svg
+            class="ic go">
+            <use href="#i-arrow" />
+          </svg></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot">
+      <div>
+        <p class="fb">Hafidz Ruzaini, S.Kom</p>
+        <p style="margin-top:.5rem;font-size:.9rem">PPG Calon Guru Informatika · Universitas Muhammadiyah Surakarta ·
+          SMA Negeri 2 Sukoharjo</p>
+      </div>
+      <div>
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="#profil">Profil</a></li>
+          <li><a href="#porto1">E-Portfolio 1</a></li>
+          <li><a href="#porto2">E-Portfolio 2</a></li>
+          <li><a href="#refleksi">Refleksi</a></li>
+          <li><a href="#lampiran">Lampiran</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyr">© 2026 Hafidz Ruzaini · E-Portfolio PPG</p>
+  </footer>
+
+  <!-- JENDELA PRATINJAU -->
+  <div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-labelledby="vTitle">
+    <div class="v-box">
+      <div class="v-bar">
+        <b id="vTitle">Pratinjau</b>
+        <a class="btn-link soft" id="vOpen" href="#" target="_blank" rel="noopener"><svg class="ic">
+            <use href="#i-link" />
+          </svg>Buka di tab baru</a>
+        <button class="btn-link" id="vClose" type="button"><svg class="ic">
+            <use href="#i-x" />
+          </svg>Tutup</button>
+      </div>
+      <div class="v-frame">
+        <iframe id="vFrame" title="Pratinjau berkas" allow="fullscreen; picture-in-picture; encrypted-media"
+          allowfullscreen referrerpolicy="strict-origin-when-cross-origin"
+          sandbox="allow-scripts allow-same-origin allow-popups allow-presentation"></iframe>
+        <div class="v-empty" id="vEmpty"><b id="vEmptyT">Tautan belum diisi</b><span id="vEmptyD">Tempel tautan berkas
+            pada atribut data-doc di bagian Lampiran.</span></div>
+      </div>
+      <p class="v-note">Pratinjau tidak tampil? Pastikan berkas di Drive dibagikan ke "Siapa saja yang memiliki link",
+        atau buka lewat tab baru.</p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* Tema */
+      try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) { }
+      document.getElementById('theme').addEventListener('click', function () {
+        var cur = root.getAttribute('data-theme');
+        if (!cur) cur = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        var next = cur === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) { }
+      });
+
+      /* Menu seluler */
+      var links = document.getElementById('navLinks'), burger = document.getElementById('burger');
+      burger.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        burger.setAttribute('aria-expanded', open);
+      });
+
+      /* Jumlah artefak mengikuti kartu lampiran */
+      [].forEach.call(document.querySelectorAll('[data-count="lamp"]'), function (el) { el.textContent = document.querySelectorAll('.lamp').length; });
+
+      /* Slide latar hero */
+      var slides = [].slice.call(document.querySelectorAll('.hero-slide'));
+      var dotsBox = document.getElementById('dots'), idx = 0, timer = null;
+      function show(i) {
+        idx = i;
+        slides.forEach(function (s, k) { s.classList.toggle('active', k === i); });
+        [].forEach.call(dotsBox.children, function (d, k) { d.classList.toggle('active', k === i); d.setAttribute('aria-selected', k === i); });
+      }
+      slides.forEach(function (s, i) {
+        var d = document.createElement('button'); d.type = 'button'; d.className = 'dot'; d.setAttribute('role', 'tab'); d.setAttribute('aria-label', 'Slide ' + (i + 1));
+        d.addEventListener('click', function () { show(i); restart(); });
+        dotsBox.appendChild(d);
+      });
+      function restart() { if (timer) clearInterval(timer); if (!reduce) timer = setInterval(function () { show((idx + 1) % slides.length); }, 6000); }
+      show(0); restart();
+
+      /* Tab analisis */
+      [].forEach.call(document.querySelectorAll('.tabs'), function (list) {
+        var tabs = [].slice.call(list.querySelectorAll('[role=tab]'));
+        function act(t) {
+          tabs.forEach(function (x) {
+            var on = x === t;
+            x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1;
+            document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+          });
+        }
+        tabs.forEach(function (t, i) {
+          t.addEventListener('click', function () { act(t); });
+          t.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+              var n = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+              n.focus(); act(n);
+            }
+          });
+        });
+      });
+
+      /* Pita akordion */
+      function setBand(w, open) {
+        var b = w.querySelector('.band'), body = w.querySelector('.band-body');
+        w.classList.toggle('closed', !open);
+        b.setAttribute('aria-expanded', open);
+        if (open) body.removeAttribute('inert'); else body.setAttribute('inert', '');
+      }
+      [].forEach.call(document.querySelectorAll('.band-wrap'), function (w) {
+        w.querySelector('.band').addEventListener('click', function () { setBand(w, w.classList.contains('closed')); });
+      });
+      function goTo(id) {
+        var t = document.getElementById(id); if (!t) return false;
+        var w = t.closest('.band-wrap');
+        if (w && w.classList.contains('closed')) {
+          setBand(w, true);
+          setTimeout(function () { t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); }, 80);
+          return true;
+        }
+        return false;
+      }
+
+      /* Navigasi aktif */
+      var navA = [].slice.call(document.querySelectorAll('#navLinks a'));
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (es) {
+          es.forEach(function (e) {
+            if (e.isIntersecting) navA.forEach(function (a) { a.classList.toggle('on', a.getAttribute('data-for') === e.target.id); });
+          });
+        }, { rootMargin: '-40% 0px -55% 0px' });
+        [].forEach.call(document.querySelectorAll('[data-nav]'), function (s) { io.observe(s); });
+      }
+
+      /* Slot foto: gambar dari folder assets tampil otomatis; klik slot kosong untuk pratinjau dari perangkat */
+      var input = document.createElement('input'); input.type = 'file'; input.accept = 'image/*'; input.hidden = true;
+      document.body.appendChild(input);
+      var target = null;
+      [].forEach.call(document.querySelectorAll('.ph, .slot'), function (s) {
+        var im = s.querySelector('img');
+        function mark() { s.classList.add('has'); s.removeAttribute('tabindex'); s.removeAttribute('role'); }
+        if (!s.getAttribute('aria-label')) s.setAttribute('aria-label', 'Pilih foto untuk pratinjau');
+        s.setAttribute('tabindex', '0'); s.setAttribute('role', 'button');
+        if (im) {
+          im.addEventListener('load', function () { if (im.naturalWidth > 0) mark(); });
+          if (im.complete && im.naturalWidth > 0) mark();
+        }
+        function pick() { if (s.classList.contains('has')) return; target = s; input.value = ''; input.click(); }
+        s.addEventListener('click', pick);
+        s.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
+      });
+      input.addEventListener('change', function () {
+        var f = input.files && input.files[0]; if (!f || !target) return;
+        var r = new FileReader(), t = target;
+        r.onload = function () {
+          var im = t.querySelector('img');
+          if (!im) { im = document.createElement('img'); t.insertBefore(im, t.firstChild); }
+          im.src = r.result; t.classList.add('has'); t.removeAttribute('tabindex'); t.removeAttribute('role');
+        };
+        r.readAsDataURL(f);
+      });
+
+      /* Lampiran: tautan, status, dan filter */
+      function docOf(id) { var el = document.getElementById(id); return el ? (el.getAttribute('data-doc') || '').trim() : ''; }
+      function isHttps(u) { return /^https:\/\//i.test(u); }
+      [].forEach.call(document.querySelectorAll('[data-lamp-link]'), function (a) {
+        var u = docOf(a.getAttribute('data-lamp-link'));
+        if (isHttps(u)) { a.href = u; a.target = '_blank'; a.rel = 'noopener'; }
+      });
+      [].forEach.call(document.querySelectorAll('.lamp'), function (c) {
+        if (isHttps((c.getAttribute('data-doc') || '').trim())) { var ch = c.querySelector('.empty-chip'); if (ch) ch.remove(); }
+      });
+      var chips = [].slice.call(document.querySelectorAll('.fchip'));
+      chips.forEach(function (ch) {
+        ch.addEventListener('click', function () {
+          var f = ch.getAttribute('data-f');
+          chips.forEach(function (x) { x.setAttribute('aria-pressed', x === ch); });
+          [].forEach.call(document.querySelectorAll('.lamp'), function (c) { c.hidden = !(f === 'all' || c.getAttribute('data-group') === f); });
+        });
+      });
+
+      /* Jendela pratinjau (Drive, Docs, Slides, YouTube) */
+      function toEmbed(u) {
+        var m;
+        if (!isHttps(u)) return '';
+        if ((m = u.match(/^https:\/\/drive\.google\.com\/file\/d\/([\w-]+)/))) return 'https://drive.google.com/file/d/' + m[1] + '/preview';
+        if ((m = u.match(/^https:\/\/docs\.google\.com\/(document|presentation|spreadsheets)\/d\/([\w-]+)/))) return 'https://docs.google.com/' + m[1] + '/d/' + m[2] + '/preview';
+        if ((m = u.match(/^https:\/\/(?:youtu\.be\/|(?:www\.)?youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/))([\w-]{11})/))) return 'https://www.youtube.com/embed/' + m[1];
+        return '';
+      }
+      var viewer = document.getElementById('viewer'), vFrame = document.getElementById('vFrame'), vEmpty = document.getElementById('vEmpty');
+      var vTitle = document.getElementById('vTitle'), vOpen = document.getElementById('vOpen'), vClose = document.getElementById('vClose');
+      var vET = document.getElementById('vEmptyT'), vED = document.getElementById('vEmptyD'), lastFocus = null;
+      function openViewer(id, trigger) {
+        var el = document.getElementById(id); if (!el) return;
+        var url = docOf(id), embed = toEmbed(url);
+        lastFocus = trigger || document.activeElement;
+        vTitle.textContent = el.getAttribute('data-title') || 'Pratinjau';
+        if (isHttps(url)) { vOpen.href = url; vOpen.hidden = false; } else { vOpen.removeAttribute('href'); vOpen.hidden = true; }
+        if (embed) { vEmpty.hidden = true; vFrame.hidden = false; vFrame.src = embed; }
+        else {
+          vFrame.hidden = true; vFrame.removeAttribute('src'); vEmpty.hidden = false;
+          if (isHttps(url)) { vET.textContent = 'Pratinjau tidak tersedia untuk tautan ini'; vED.textContent = 'Gunakan tombol Buka di tab baru.'; }
+          else { vET.textContent = 'Tautan belum diisi'; vED.textContent = 'Tempel tautan berkas pada atribut data-doc di bagian Lampiran.'; }
+        }
+        viewer.hidden = false; document.body.style.overflow = 'hidden'; vClose.focus();
+      }
+      function closeViewer() {
+        viewer.hidden = true; vFrame.removeAttribute('src'); document.body.style.overflow = '';
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+      vClose.addEventListener('click', closeViewer);
+      viewer.addEventListener('click', function (e) { if (e.target === viewer) closeViewer(); });
+      document.addEventListener('keydown', function (e) {
+        if (viewer.hidden) return;
+        if (e.key === 'Escape') { closeViewer(); return; }
+        if (e.key === 'Tab') {
+          var f = [vClose]; if (!vOpen.hidden) f.unshift(vOpen);
+          var i = f.indexOf(document.activeElement);
+          if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+          else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); }
+        }
+      });
+
+      /* Klik: pratinjau, anchor, dan tautan kosong */
+      document.addEventListener('click', function (e) {
+        var lb = e.target.closest && e.target.closest('[data-lamp]');
+        if (lb) { openViewer(lb.getAttribute('data-lamp'), lb); return; }
+        var a = e.target.closest && e.target.closest('a'); if (!a) return;
+        var h = a.getAttribute('href');
+        if (h === '#' || h === null) { e.preventDefault(); return; }
+        if (h.length > 1 && h.charAt(0) === '#') {
+          if (goTo(h.slice(1))) e.preventDefault();
+          links.classList.remove('open'); burger.setAttribute('aria-expanded', 'false');
+        }
+      });
+      if (location.hash.length > 1) goTo(location.hash.slice(1));
+    })();
+  </script>
+
+</body>
+
+</html>
