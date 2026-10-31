@@ -4569,8 +4569,7 @@
         <iframe id="vFrame" title="Pratinjau berkas" allow="fullscreen; picture-in-picture; encrypted-media"
           allowfullscreen referrerpolicy="strict-origin-when-cross-origin"
           sandbox="allow-scripts allow-same-origin allow-popups allow-presentation"></iframe>
-        <div class="v-empty" id="vEmpty"><b id="vEmptyT">Tautan belum diisi</b><span id="vEmptyD">Tempel tautan berkas
-            pada atribut data-doc di bagian Lampiran.</span></div>
+        <div class="v-empty" id="vEmpty"><b id="vEmptyT">Pratinjau tidak tersedia</b><span id="vEmptyD">Tidak ada dokumen yang dapat ditampilkan.</span></div>
       </div>
       <p class="v-note">Pratinjau tidak tampil? Pastikan berkas di Drive dibagikan ke "Siapa saja yang memiliki link",
         atau buka lewat tab baru.</p>
@@ -4581,6 +4580,25 @@
     (function () {
       var root = document.documentElement;
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      [].forEach.call(document.querySelectorAll('.todo, .empty-chip, .eval-empty'), function (el) {
+        var item = el.closest('li'), paragraph = el.closest('p');
+        if (item && item.textContent.trim() === el.textContent.trim()) item.remove();
+        else if (paragraph && paragraph.textContent.trim() === el.textContent.trim()) paragraph.remove();
+        else el.remove();
+      });
+      [].forEach.call(document.querySelectorAll('.an, .teori, .refl'), function (block) {
+        if (!block.querySelector('p, li')) block.remove();
+      });
+      [].forEach.call(document.querySelectorAll('.pm'), function (panel) {
+        [].forEach.call(panel.children, function (column) {
+          if (!column.querySelector('li')) column.remove();
+        });
+        if (!panel.children.length) panel.remove();
+      });
+      [].forEach.call(document.querySelectorAll('.ana'), function (analysis) {
+        if (!analysis.querySelector('.an')) analysis.remove();
+      });
 
       /* Tema */
       try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) { }
@@ -4810,7 +4828,7 @@
         else {
           vFrame.hidden = true; vFrame.removeAttribute('src'); vEmpty.hidden = false;
           if (isHttps(url)) { vET.textContent = 'Pratinjau tidak tersedia untuk tautan ini'; vED.textContent = 'Gunakan tombol Buka di tab baru.'; }
-          else { vET.textContent = 'Tautan belum diisi'; vED.textContent = 'Tempel tautan berkas pada atribut data-doc di bagian Lampiran.'; }
+          else { vET.textContent = 'Pratinjau tidak tersedia'; vED.textContent = 'Tidak ada dokumen yang dapat ditampilkan.'; }
         }
         viewer.hidden = false; document.body.style.overflow = 'hidden'; vClose.focus();
       }
