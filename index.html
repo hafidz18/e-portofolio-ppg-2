@@ -965,6 +965,15 @@
       place-items: center;
     }
 
+    .region-photo {
+      width: min(100%, 260px);
+      aspect-ratio: 3 / 4;
+      justify-self: center;
+      border: 0;
+      border-radius: 12px;
+      box-shadow: var(--shadow-md);
+    }
+
     .ph.has {
       border-style: solid;
       border-color: var(--line);
@@ -1000,6 +1009,106 @@
 
     .ph.has figcaption {
       display: none;
+    }
+
+    .nm-carousel {
+      display: grid;
+      grid-template-columns: 2.4rem minmax(0, 1fr) 2.4rem;
+      align-items: center;
+      gap: .55rem;
+      min-width: 0;
+    }
+
+    .panel.nonmengajar-panel {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .nonmengajar-panel>.nm-carousel {
+      width: 100%;
+      max-width: 960px;
+      margin-inline: auto;
+    }
+
+    .nm-slide .ph {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      cursor: pointer;
+    }
+
+    .nm-caption {
+      margin-top: .55rem;
+      text-align: center;
+      color: var(--text);
+      font-size: .86rem;
+      line-height: 1.45;
+    }
+
+    .nm-arrow {
+      width: 2.4rem;
+      height: 2.4rem;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--card);
+      color: var(--blue);
+      cursor: pointer;
+    }
+
+    .nm-arrow:hover {
+      background: var(--tint);
+    }
+
+    .nm-arrow.prev svg {
+      transform: rotate(180deg);
+    }
+
+    .nm-dots {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      gap: .45rem;
+    }
+
+    .nm-dot {
+      width: 9px;
+      height: 9px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: var(--line);
+      cursor: pointer;
+    }
+
+    .nm-dot[aria-selected="true"] {
+      background: var(--blue);
+      outline: 2px solid var(--tint);
+      outline-offset: 2px;
+    }
+
+    .ph.has-embed {
+      cursor: default;
+    }
+
+    .ph.has-embed>img,
+    .ph.has-embed>figcaption {
+      display: none !important;
+    }
+
+    .doc-embed {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      background: #fff;
+    }
+
+    .doc-embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #fff;
     }
 
     /* Pengantar */
@@ -1468,8 +1577,50 @@
       padding: 1.5rem;
     }
 
+    .panel.video-analysis-panel {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.25rem;
+    }
+
+    .video-analysis-panel .side {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .video-analysis-panel .vid,
+    .video-analysis-panel .docchip {
+      width: 100%;
+      max-width: 960px;
+      margin-inline: auto;
+    }
+
+    .video-analysis-panel .info {
+      width: 100%;
+      max-width: 760px;
+      margin-inline: auto;
+      gap: .75rem;
+    }
+
+    .video-analysis-panel .ana {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .video-analysis-panel .an {
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--blue);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+    }
+
     @media (max-width: 900px) {
       .panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .video-analysis-panel .ana,
+      .video-analysis-panel .pm {
         grid-template-columns: 1fr;
       }
     }
@@ -1731,6 +1882,10 @@
       z-index: 2;
     }
 
+    .vid.has-embed .play-btn {
+      display: none;
+    }
+
     .play-btn:hover {
       transform: scale(1.08);
     }
@@ -1959,6 +2114,38 @@
       line-height: 1.6;
     }
 
+    .innovation-frame {
+      position: relative;
+      width: 100%;
+      height: min(78vh, 900px);
+      min-height: 560px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--card);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .innovation-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #fff;
+    }
+
+    .innovation-open {
+      justify-self: start;
+    }
+
+    @media (max-width: 700px) {
+      .innovation-frame {
+        height: 75vh;
+        min-height: 480px;
+      }
+    }
+
     /* Lampiran */
     .fchips {
       display: flex;
@@ -2125,6 +2312,85 @@
       height: 100%;
       border: 0;
       background: #fff;
+    }
+
+    .panel.evaluation-panel {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .eval-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+      min-width: 0;
+    }
+
+    .eval-document {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: .75rem;
+      min-width: 0;
+    }
+
+    .eval-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .6rem;
+    }
+
+    .eval-head h3 {
+      margin-right: auto;
+      font-size: 1.35rem;
+    }
+
+    .eval-frame {
+      position: relative;
+      height: min(72vh, 850px);
+      min-height: 480px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--tint);
+    }
+
+    .eval-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #fff;
+    }
+
+    .eval-empty {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      gap: .5rem;
+      padding: 1.25rem;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .eval-empty b {
+      color: var(--ink);
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 900px) {
+      .eval-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .eval-frame {
+        height: min(68vh, 700px);
+        min-height: 420px;
+      }
     }
 
     .v-empty {
@@ -2458,6 +2724,9 @@
         <a href="#refleksi" data-for="refleksi"><svg class="ic">
             <use href="#i-bulb" />
           </svg>Refleksi</a>
+        <a href="#inovasi" data-for="inovasi"><svg class="ic">
+            <use href="#i-code" />
+          </svg>Karya Inovasi</a>
         <a href="#lampiran" data-for="lampiran"><svg class="ic">
             <use href="#i-file" />
           </svg>Lampiran</a>
@@ -2681,7 +2950,7 @@
               </div>
             </div>
             <div class="pflex">
-              <figure class="ph" aria-label="Ikon Daerah Cilacap">
+              <figure class="ph region-photo" aria-label="Ikon Daerah Cilacap">
                 <img src="assets/cilacap.jpg" alt="Ikon Daerah Cilacap" loading="lazy" decoding="async">
                 <figcaption><svg class="ic">
                     <use href="#i-cam" />
@@ -2792,10 +3061,6 @@
                   class="ic">
                   <use href="#i-clip" />
                 </svg>Rancangan</button>
-              <button class="tab" role="tab" id="t-b" aria-controls="p-b" aria-selected="false" tabindex="-1"
-                type="button"><svg class="ic">
-                  <use href="#i-layers" />
-                </svg>Materi</button>
               <button class="tab" role="tab" id="t-c" aria-controls="p-c" aria-selected="false" tabindex="-1"
                 type="button"><svg class="ic">
                   <use href="#i-screen" />
@@ -2808,14 +3073,6 @@
                 type="button"><svg class="ic">
                   <use href="#i-users" />
                 </svg>Nonmengajar</button>
-              <button class="tab" role="tab" id="t-f" aria-controls="p-f" aria-selected="false" tabindex="-1"
-                type="button"><svg class="ic">
-                  <use href="#i-filecheck" />
-                </svg>Instrumen</button>
-              <button class="tab" role="tab" id="t-g" aria-controls="p-g" aria-selected="false" tabindex="-1"
-                type="button"><svg class="ic">
-                  <use href="#i-pencil" />
-                </svg>Hasil siswa</button>
               <button class="tab" role="tab" id="t-h" aria-controls="p-h" aria-selected="false" tabindex="-1"
                 type="button"><svg class="ic">
                   <use href="#i-award" />
@@ -2836,7 +3093,9 @@
                   <div><b>Modul ajar siklus 1</b><small>Lampiran A</small></div>
                   <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-a"><svg class="ic">
                         <use href="#i-eye" />
-                      </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-a"><svg class="ic">
+                      </svg>Pratinjau</button><a class="btn-link soft"
+                      href="https://drive.google.com/file/d/1XuL4Kw3npRhS99sj5GwQG0xswBKOSLIL/view?usp=sharing"
+                      data-lamp-link="lamp-a"><svg class="ic">
                         <use href="#i-link" />
                       </svg>Buka tautan</a></div>
                 </div>
@@ -2860,7 +3119,7 @@
                       siklus, total 12 JP) dengan model Problem Based Learning. Siklus 1, <em>Memahami DSI dan Dampak
                         Teknologi Digital</em>, saya pilih sebagai rancangan terbaik karena memuat seluruh komponen
                       perencanaan secara utuh: asesmen awal, tujuan tiga ranah, 23 langkah kegiatan, LKPD, dan instrumen
-                      penilaian. <span class="todo">ISI: kelas (mis. XII-…) dan tanggal pelaksanaan</span></p>
+                      penilaian.</p>
                   </div>
                   <div class="an">
                     <h4><svg class="ic">
@@ -2922,8 +3181,7 @@
                     </svg>Tindak lanjut</h4>
                   <p>Pada rancangan berikutnya saya akan memangkas waktu penyajian dengan gallery walk atau memilih
                     beberapa kelompok sebagai penyaji, menyusun rubrik sikap berjenjang, dan memvariasikan kegiatan
-                    pembuka antarsiklus tanpa mengubah keselarasan tujuan dan asesmen. <span class="todo">ISI: perubahan
-                      lain berdasarkan pengalaman nyata di kelas</span></p>
+                    pembuka antarsiklus tanpa mengubah keselarasan tujuan dan asesmen.</p>
                 </div>
               </div>
             </div>
@@ -3042,7 +3300,9 @@
                   <div><b>Media pembelajaran</b><small>Lampiran C</small></div>
                   <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-c"><svg class="ic">
                         <use href="#i-eye" />
-                      </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-c"><svg class="ic">
+                      </svg>Pratinjau</button><a class="btn-link soft"
+                      href="https://drive.google.com/file/d/1XuL4Kw3npRhS99sj5GwQG0xswBKOSLIL/view?usp=sharing"
+                      data-lamp-link="lamp-c"><svg class="ic">
                         <use href="#i-link" />
                       </svg>Buka tautan</a></div>
                 </div>
@@ -3127,7 +3387,7 @@
             </div>
 
             <!-- D. VIDEO (siklus 1) -->
-            <div class="card panel" id="p-d" role="tabpanel" aria-labelledby="t-d" hidden>
+            <div class="card panel video-analysis-panel" id="p-d" role="tabpanel" aria-labelledby="t-d" hidden>
               <div class="side">
                 <div class="vid">
                   <figure class="ph" style="--ar:16/9"><img src="assets/video-1.jpg" alt="Cuplikan video siklus 1"
@@ -3165,139 +3425,66 @@
                     <h4><svg class="ic">
                         <use href="#i-compass" />
                       </svg>Konteks</h4>
-                    <p>Video merekam pelaksanaan siklus 1, <em>Memahami DSI dan Dampak Teknologi Digital</em>, dengan
-                      model PBL di kelas XII. <span class="todo">ISI: durasi video, kelas, dan bagian yang dianalisis
-                        (sebut menitnya)</span></p>
+                    <p>Rekaman praktik siklus 1, <em>Memahami DSI dan Dampak Teknologi Digital</em>, dengan model PBL
+                      di kelas XII. <span class="todo">ISI: durasi dan menit cuplikan utama</span></p>
                   </div>
-                  <div class="an">
-                    <h4><svg class="ic">
-                        <use href="#i-target" />
-                      </svg>Tujuan</h4>
-                    <p>Tujuan pembelajaran pada pertemuan ini: murid menganalisis minimal tiga manfaat dan tiga risiko
-                      teknologi digital beserta dampaknya (C4), menunjukkan sikap menghargai pendapat dan menjaga
-                      privasi teman (A3), serta menyajikan peta tindakan, manfaat, risiko, dan dampak sosial pada LKPD 1
-                      (P3).</p>
-                  </div>
-                </div>
-                <div class="pm">
-                  <div class="plus">
-                    <h4><svg class="ic">
-                        <use href="#i-check" />
-                      </svg>Kelebihan</h4>
-                    <ul>
-                      <li><span class="todo">ISI: alur pembukaan, inti, dan penutup (sebut menitnya). Rencana:
-                          pendahuluan 15 menit, inti 105 menit, penutup 15 menit</span></li>
-                      <li><span class="todo">ISI: interaksi dan teknik bertanya, misalnya saat apersepsi dan
-                          penyelidikan kasus</span></li>
-                    </ul>
-                  </div>
-                  <div class="minus">
-                    <h4><svg class="ic">
-                        <use href="#i-alert" />
-                      </svg>Kekurangan</h4>
-                    <ul>
-                      <li><span class="todo">ISI: pengelolaan waktu, terutama penyajian dan tanggapan kelompok yang
-                          direncanakan 20 menit</span></li>
-                      <li><span class="todo">ISI: respons murid yang kurang tergali atau bagian yang meleset dari
-                          rancangan</span></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="teori">
-                  <h4><svg class="ic">
-                      <use href="#i-book" />
-                    </svg>Kajian teori</h4>
-                  <p><span class="todo">ISI: kaitkan dengan teori dari mata kuliah terintegrasi. Contoh: sintaks PBL
-                      (Arends), teknik bertanya berbasis taksonomi Bloom, pengelolaan kelas, praktik reflektif
-                      (Schön)</span></p>
-                </div>
-                <div class="refl">
-                  <h4><svg class="ic">
-                      <use href="#i-refresh" />
-                    </svg>Tindak lanjut</h4>
-                  <p><span class="todo">ISI: kesesuaian pelaksanaan dengan rancangan dan rencana untuk siklus
-                      berikutnya</span></p>
                 </div>
               </div>
             </div>
 
             <!-- E. NONMENGAJAR -->
-            <div class="card panel" id="p-e" role="tabpanel" aria-labelledby="t-e" hidden>
-              <div class="side">
-                <figure class="ph"><img src="assets/nonmengajar-1.jpg" alt="Dokumentasi kegiatan nonmengajar"
-                    loading="lazy" decoding="async">
-                  <figcaption><svg class="ic">
-                      <use href="#i-cam" />
-                    </svg><b>Foto dokumentasi</b><small>assets/nonmengajar-1.jpg</small></figcaption>
-                </figure>
-                <div class="docchip">
-                  <span class="ftype" data-t="pdf">PDF</span>
-                  <div><b>Dokumentasi nonmengajar</b><small>Lampiran E</small></div>
-                  <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-e"><svg class="ic">
-                        <use href="#i-eye" />
-                      </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-e"><svg class="ic">
-                        <use href="#i-link" />
-                      </svg>Buka tautan</a></div>
-                </div>
-              </div>
-              <div class="info">
-                <div class="ihead"><span class="ico"><svg class="ic">
-                      <use href="#i-users" />
-                    </svg></span>
-                  <div>
-                    <p class="sec-tag">Analisis E</p>
-                    <h3>Kegiatan nonmengajar</h3>
+            <div class="card panel nonmengajar-panel" id="p-e" role="tabpanel" aria-labelledby="t-e" hidden>
+              <div class="nm-carousel" data-carousel role="region" aria-roledescription="carousel"
+                aria-label="Foto kegiatan nonmengajar">
+                <button class="nm-arrow prev" type="button" data-carousel-prev aria-label="Foto sebelumnya"><svg
+                    class="ic">
+                    <use href="#i-arrow" />
+                  </svg></button>
+                <div class="nm-slides" aria-live="polite">
+                  <div class="nm-slide" role="group" aria-roledescription="slide" aria-label="1 dari 3">
+                    <figure class="ph"><img src="assets/nonmengajar-1.jpg" alt="Kegiatan nonmengajar pertama"
+                        loading="lazy" decoding="async">
+                      <figcaption><svg class="ic">
+                          <use href="#i-cam" />
+                        </svg><b>Foto kegiatan 1</b>
+                        <small>assets/nonmengajar-1.jpg</small>
+                      </figcaption>
+                    </figure>
+                    <p class="nm-caption">Dokumentasi kegiatan nonmengajar pertama.</p>
+                  </div>
+                  <div class="nm-slide" role="group" aria-roledescription="slide" aria-label="2 dari 3" hidden>
+                    <figure class="ph"><img src="assets/nonmengajar-2.jpg" alt="Kegiatan nonmengajar kedua"
+                        loading="lazy" decoding="async">
+                      <figcaption><svg class="ic">
+                          <use href="#i-cam" />
+                        </svg><b>Foto kegiatan 2</b>
+                        <small>assets/nonmengajar-2.jpg</small>
+                      </figcaption>
+                    </figure>
+                    <p class="nm-caption">Dokumentasi kegiatan nonmengajar kedua.</p>
+                  </div>
+                  <div class="nm-slide" role="group" aria-roledescription="slide" aria-label="3 dari 3" hidden>
+                    <figure class="ph"><img src="assets/nonmengajar-3.jpg" alt="Kegiatan nonmengajar ketiga"
+                        loading="lazy" decoding="async">
+                      <figcaption><svg class="ic">
+                          <use href="#i-cam" />
+                        </svg><b>Foto kegiatan 3</b>
+                        <small>assets/nonmengajar-3.jpg</small>
+                      </figcaption>
+                    </figure>
+                    <p class="nm-caption">Dokumentasi kegiatan nonmengajar ketiga.</p>
                   </div>
                 </div>
-                <div class="ana">
-                  <div class="an">
-                    <h4><svg class="ic">
-                        <use href="#i-compass" />
-                      </svg>Konteks</h4>
-                    <p><span class="todo">ISI: kegiatan yang diikuti (piket, pendampingan, rapat guru, atau lainnya) dan
-                        peran saya</span></p>
-                  </div>
-                  <div class="an">
-                    <h4><svg class="ic">
-                        <use href="#i-target" />
-                      </svg>Tujuan</h4>
-                    <p><span class="todo">ISI: tujuan kegiatan bagi sekolah dan bagi pengembangan kompetensi saya</span>
-                    </p>
-                  </div>
-                </div>
-                <div class="pm">
-                  <div class="plus">
-                    <h4><svg class="ic">
-                        <use href="#i-check" />
-                      </svg>Kelebihan</h4>
-                    <ul>
-                      <li><span class="todo">ISI: pembelajaran tentang budaya sekolah</span></li>
-                      <li><span class="todo">ISI: kompetensi guru yang terasah</span></li>
-                    </ul>
-                  </div>
-                  <div class="minus">
-                    <h4><svg class="ic">
-                        <use href="#i-alert" />
-                      </svg>Kekurangan</h4>
-                    <ul>
-                      <li><span class="todo">ISI: tantangan yang dihadapi</span></li>
-                      <li><span class="todo">ISI: hal yang belum sempat saya ikuti</span></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="teori">
-                  <h4><svg class="ic">
-                      <use href="#i-book" />
-                    </svg>Kajian teori</h4>
-                  <p><span class="todo">ISI: kaitkan dengan teori dari mata kuliah terintegrasi. Contoh: empat
-                      kompetensi guru (pedagogik, profesional, kepribadian, sosial), komunitas belajar
-                      profesional</span></p>
-                </div>
-                <div class="refl">
-                  <h4><svg class="ic">
-                      <use href="#i-refresh" />
-                    </svg>Tindak lanjut</h4>
-                  <p><span class="todo">ISI: kegiatan sekolah yang ingin saya ikuti dan kembangkan berikutnya</span></p>
+                <button class="nm-arrow" type="button" data-carousel-next aria-label="Foto berikutnya"><svg class="ic">
+                    <use href="#i-arrow" />
+                  </svg></button>
+                <div class="nm-dots" role="tablist" aria-label="Pilih foto kegiatan">
+                  <button class="nm-dot" type="button" role="tab" aria-label="Tampilkan foto 1"
+                    aria-selected="true"></button>
+                  <button class="nm-dot" type="button" role="tab" aria-label="Tampilkan foto 2" aria-selected="false"
+                    tabindex="-1"></button>
+                  <button class="nm-dot" type="button" role="tab" aria-label="Tampilkan foto 3" aria-selected="false"
+                    tabindex="-1"></button>
                 </div>
               </div>
             </div>
@@ -3481,82 +3668,42 @@
             </div>
 
             <!-- H. PENILAIAN GP DAN DPL -->
-            <div class="card panel" id="p-h" role="tabpanel" aria-labelledby="t-h" hidden>
-              <div class="side">
-                <figure class="ph"><img src="assets/penilaian-1.jpg" alt="Dokumentasi penilaian guru pamong dan DPL"
-                    loading="lazy" decoding="async">
-                  <figcaption><svg class="ic">
-                      <use href="#i-cam" />
-                    </svg><b>Foto dokumentasi</b><small>assets/penilaian-1.jpg</small></figcaption>
-                </figure>
-                <div class="docchip">
-                  <span class="ftype" data-t="pdf">PDF</span>
-                  <div><b>Penilaian GP dan DPL</b><small>Lampiran H</small></div>
-                  <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-h"><svg class="ic">
-                        <use href="#i-eye" />
-                      </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-h"><svg class="ic">
+            <div class="card panel evaluation-panel" id="p-h" role="tabpanel" aria-labelledby="t-h" hidden>
+              <div class="eval-grid">
+                <section class="eval-document" data-eval-doc="lamp-h-gp">
+                  <div class="eval-head">
+                    <h3>Penilaian Guru Pamong (GP)</h3>
+                    <a class="btn-link soft" data-eval-link href="#" target="_blank" rel="noopener" hidden><svg
+                        class="ic">
                         <use href="#i-link" />
-                      </svg>Buka tautan</a></div>
-                </div>
-              </div>
-              <div class="info">
-                <div class="ihead"><span class="ico"><svg class="ic">
-                      <use href="#i-award" />
-                    </svg></span>
-                  <div>
-                    <p class="sec-tag">Analisis H</p>
-                    <h3>Penilaian GP dan DPL</h3>
+                      </svg>Buka di tab baru</a>
                   </div>
-                </div>
-                <div class="ana">
-                  <div class="an">
-                    <h4><svg class="ic">
-                        <use href="#i-compass" />
-                      </svg>Konteks</h4>
-                    <p><span class="todo">ISI: bentuk penilaian atau lembar observasi dari guru pamong dan DPL, serta
-                        kapan diberikan</span></p>
+                  <div class="eval-frame">
+                    <iframe title="Pratinjau dokumen penilaian GP" loading="lazy" allow="fullscreen" allowfullscreen
+                      referrerpolicy="strict-origin-when-cross-origin"
+                      sandbox="allow-scripts allow-same-origin allow-popups allow-presentation" data-eval-frame
+                      hidden></iframe>
+                    <div class="eval-empty" data-eval-empty><b>Dokumen penilaian GP belum ditautkan</b><span>Isi tautan
+                        pada kartu Lampiran Penilaian GP.</span></div>
                   </div>
-                  <div class="an">
-                    <h4><svg class="ic">
-                        <use href="#i-target" />
-                      </svg>Tujuan</h4>
-                    <p><span class="todo">ISI: aspek yang dinilai dan manfaatnya bagi pengembangan praktik mengajar
-                        saya</span></p>
+                </section>
+                <section class="eval-document" data-eval-doc="lamp-h-dpl">
+                  <div class="eval-head">
+                    <h3>Penilaian Dosen Pembimbing Lapangan (DPL)</h3>
+                    <a class="btn-link soft" data-eval-link href="#" target="_blank" rel="noopener" hidden><svg
+                        class="ic">
+                        <use href="#i-link" />
+                      </svg>Buka di tab baru</a>
                   </div>
-                </div>
-                <div class="pm">
-                  <div class="plus">
-                    <h4><svg class="ic">
-                        <use href="#i-check" />
-                      </svg>Kelebihan</h4>
-                    <ul>
-                      <li><span class="todo">ISI: kekuatan yang diakui GP dan DPL</span></li>
-                      <li><span class="todo">ISI: bukti perkembangan antarsiklus</span></li>
-                    </ul>
+                  <div class="eval-frame">
+                    <iframe title="Pratinjau dokumen penilaian DPL" loading="lazy" allow="fullscreen" allowfullscreen
+                      referrerpolicy="strict-origin-when-cross-origin"
+                      sandbox="allow-scripts allow-same-origin allow-popups allow-presentation" data-eval-frame
+                      hidden></iframe>
+                    <div class="eval-empty" data-eval-empty><b>Dokumen penilaian DPL belum ditautkan</b><span>Isi tautan
+                        pada kartu Lampiran Penilaian DPL.</span></div>
                   </div>
-                  <div class="minus">
-                    <h4><svg class="ic">
-                        <use href="#i-alert" />
-                      </svg>Kekurangan</h4>
-                    <ul>
-                      <li><span class="todo">ISI: masukan dan catatan perbaikan dari GP dan DPL</span></li>
-                      <li><span class="todo">ISI: aspek yang masih lemah</span></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="teori">
-                  <h4><svg class="ic">
-                      <use href="#i-book" />
-                    </svg>Kajian teori</h4>
-                  <p><span class="todo">ISI: kaitkan dengan teori dari mata kuliah terintegrasi. Contoh: praktik
-                      reflektif (Schön), umpan balik dari mentor dan rekan sejawat</span></p>
-                </div>
-                <div class="refl">
-                  <h4><svg class="ic">
-                      <use href="#i-refresh" />
-                    </svg>Tindak lanjut</h4>
-                  <p><span class="todo">ISI: cara saya menindaklanjuti setiap masukan</span></p>
-                </div>
+                </section>
               </div>
             </div>
           </div>
@@ -3670,10 +3817,18 @@
                   class="ic">
                   <use href="#i-clip" />
                 </svg>Rancangan terbaik</button>
+              <button class="tab" role="tab" id="t-k" aria-controls="p-k" aria-selected="false" tabindex="-1"
+                type="button"><svg class="ic">
+                  <use href="#i-screen" />
+                </svg>Media</button>
               <button class="tab" role="tab" id="t-j" aria-controls="p-j" aria-selected="false" tabindex="-1"
                 type="button"><svg class="ic">
                   <use href="#i-video" />
                 </svg>Video pelaksanaan</button>
+              <button class="tab" role="tab" id="t-l" aria-controls="p-l" aria-selected="false" tabindex="-1"
+                type="button"><svg class="ic">
+                  <use href="#i-award" />
+                </svg>Penilaian GP dan DPL</button>
             </div>
 
             <!-- I. RANCANGAN TERBAIK SIKLUS 2-4 -->
@@ -3785,7 +3940,7 @@
             </div>
 
             <!-- J. VIDEO TERBAIK SIKLUS 2-4 -->
-            <div class="card panel" id="p-j" role="tabpanel" aria-labelledby="t-j" hidden>
+            <div class="card panel video-analysis-panel" id="p-j" role="tabpanel" aria-labelledby="t-j" hidden>
               <div class="side">
                 <div class="vid">
                   <figure class="ph" style="--ar:16/9"><img src="assets/terbaik-video.jpg" alt="Cuplikan video terbaik"
@@ -3814,7 +3969,7 @@
                       <use href="#i-video" />
                     </svg></span>
                   <div>
-                    <p class="sec-tag">Siklus 2 sampai 4</p>
+                    <p class="sec-tag">Analisis J · Siklus 4 terbaik</p>
                     <h3>Video pelaksanaan</h3>
                   </div>
                 </div>
@@ -3823,17 +3978,58 @@
                     <h4><svg class="ic">
                         <use href="#i-compass" />
                       </svg>Konteks</h4>
-                    <p>Video ini memperlihatkan pelaksanaan siklus 4, saat murid membuat dan mempresentasikan pesan
-                      edukasi digital. <span class="todo">ISI: konfirmasi siklus, durasi, kelas, dan bagian yang
-                        dianalisis (sebut menitnya)</span></p>
+                    <p>Video menampilkan pelaksanaan siklus 4: pembuatan dan presentasi pesan edukasi digital. <span
+                        class="todo">ISI: kelas, durasi, dan menit cuplikan utama</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- K. MEDIA RANCANGAN TERBAIK SIKLUS 4 -->
+            <div class="card panel" id="p-k" role="tabpanel" aria-labelledby="t-k" hidden>
+              <div class="side">
+                <figure class="ph"><img src="assets/media-terbaik.jpg"
+                    alt="Dokumentasi media pembelajaran rancangan terbaik siklus 4" loading="lazy" decoding="async">
+                  <figcaption><svg class="ic">
+                      <use href="#i-cam" />
+                    </svg><b>Foto dokumentasi</b><small>assets/media-terbaik.jpg</small></figcaption>
+                </figure>
+                <div class="docchip">
+                  <span class="ftype" data-t="slide">SLIDE</span>
+                  <div><b>Media rancangan terbaik · Siklus 4</b><small>Lampiran K</small></div>
+                  <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-k"><svg class="ic">
+                        <use href="#i-eye" />
+                      </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-k"><svg class="ic">
+                        <use href="#i-link" />
+                      </svg>Buka tautan</a></div>
+                </div>
+              </div>
+              <div class="info">
+                <div class="ihead"><span class="ico"><svg class="ic">
+                      <use href="#i-screen" />
+                    </svg></span>
+                  <div>
+                    <p class="sec-tag">Analisis K · Rancangan terbaik</p>
+                    <h3>Media pembelajaran siklus 4</h3>
+                  </div>
+                </div>
+                <div class="ana">
+                  <div class="an">
+                    <h4><svg class="ic">
+                        <use href="#i-compass" />
+                      </svg>Konteks</h4>
+                    <p>Analisis ini dibatasi pada media yang digunakan dalam rancangan terbaik, yaitu siklus 4:
+                      <em>Membuat dan Mempresentasikan Pesan Edukasi Digital</em>. Media yang dibahas adalah media untuk
+                      merancang dan menyajikan pesan edukasi, sesuai dokumen rancangan dan praktik yang benar-benar
+                      dilakukan.
+                    </p>
                   </div>
                   <div class="an">
                     <h4><svg class="ic">
                         <use href="#i-target" />
                       </svg>Tujuan</h4>
-                    <p>Pertemuan ini bertujuan agar murid dapat merancang dan mempresentasikan pesan edukasi digital
-                      yang memuat minimal tiga DO, tiga DON'T, dan langkah REPORT, serta memberi umpan balik yang santun
-                      kepada kelompok lain.</p>
+                    <p>Membantu murid membuat dan mempresentasikan pesan edukasi digital yang memenuhi kriteria
+                      rancangan siklus 4.</p>
                   </div>
                 </div>
                 <div class="pm">
@@ -3842,21 +4038,20 @@
                         <use href="#i-check" />
                       </svg>Kelebihan</h4>
                     <ul>
-                      <li><span class="todo">ISI: hal yang menurutmu berjalan baik di video, sebut menitnya. Bisa
-                          dilihat dari cara kamu memberi arahan, berkeliling saat penyelidikan, atau menanggapi
-                          presentasi</span></li>
-                      <li><span class="todo">ISI: perkembangan dibandingkan video siklus 1, misalnya cara bertanya,
-                          pengelolaan waktu, atau keterlibatan murid</span></li>
+                      <li>Pilihan bentuk produk, seperti poster, infografik, carousel, atau lembar pesan, memberi ruang
+                        kreativitas.</li>
+                      <li>Produk dapat disesuaikan dengan isu dan audiens yang dipilih kelompok.</li>
+                      <li>Rancangan menyediakan alternatif bentuk produk, termasuk pilihan nondigital.</li>
                     </ul>
                   </div>
                   <div class="minus">
                     <h4><svg class="ic">
                         <use href="#i-alert" />
-                      </svg>Kekurangan</h4>
+                      </svg>Hal yang perlu diperhatikan</h4>
                     <ul>
-                      <li><span class="todo">ISI: hal yang belum berjalan baik di video, sebut menitnya. Rencananya inti
-                          berlangsung 105 menit, apakah waktunya cukup?</span></li>
-                      <li><span class="todo">ISI: perbedaan antara rancangan dan pelaksanaan</span></li>
+                      <li>Perbedaan akses perangkat dapat memengaruhi proses dan tampilan produk.</li>
+                      <li>Waktu pembuatan perlu disesuaikan dengan media yang dipilih kelompok.</li>
+                      <li>Kriteria penilaian perlu berfokus pada isi pesan, bukan hanya kualitas desain.</li>
                     </ul>
                   </div>
                 </div>
@@ -3864,16 +4059,58 @@
                   <h4><svg class="ic">
                       <use href="#i-book" />
                     </svg>Kajian teori</h4>
-                  <p><span class="todo">ISI: kaitkan dengan teori dari mata kuliah terintegrasi. Contoh: umpan balik
-                      (Hattie dan Timperley, 2007), pengelolaan kelas, praktik reflektif (Schön)</span></p>
+                  <p>Pemilihan media perlu menyelaraskan teknologi, pedagogi, dan konten (TPACK; Mishra dan Koehler,
+                    2006). Produk pesan edukasi juga memberi kesempatan kepada murid untuk menerapkan pemahaman dalam
+                    bentuk yang relevan bagi audiensnya.</p>
                 </div>
                 <div class="refl">
                   <h4><svg class="ic">
                       <use href="#i-refresh" />
                     </svg>Tindak lanjut</h4>
-                  <p><span class="todo">ISI: yang akan dipertahankan dan yang akan diperbaiki pada praktik mengajar
-                      berikutnya</span></p>
+                  <p>Saya akan menyiapkan alternatif nondigital, memastikan kriteria penilaian menekankan isi pesan, dan
+                    mengalokasikan waktu sesuai media yang dipilih. <span class="todo">ISI: media yang benar-benar
+                      digunakan pada siklus 4 dan kendala yang terjadi</span></p>
                 </div>
+              </div>
+            </div>
+
+            <!-- L. PENILAIAN GP DAN DPL -->
+            <div class="card panel evaluation-panel" id="p-l" role="tabpanel" aria-labelledby="t-l" hidden>
+              <div class="eval-grid">
+                <section class="eval-document" data-eval-doc="lamp-l-gp">
+                  <div class="eval-head">
+                    <h3>Penilaian Guru Pamong (GP)</h3>
+                    <a class="btn-link soft" data-eval-link href="#" target="_blank" rel="noopener" hidden><svg
+                        class="ic">
+                        <use href="#i-link" />
+                      </svg>Buka di tab baru</a>
+                  </div>
+                  <div class="eval-frame">
+                    <iframe title="Pratinjau dokumen penilaian GP" loading="lazy" allow="fullscreen" allowfullscreen
+                      referrerpolicy="strict-origin-when-cross-origin"
+                      sandbox="allow-scripts allow-same-origin allow-popups allow-presentation" data-eval-frame
+                      hidden></iframe>
+                    <div class="eval-empty" data-eval-empty><b>Dokumen penilaian GP belum ditautkan</b><span>Isi tautan
+                        pada kartu Lampiran Penilaian GP.</span></div>
+                  </div>
+                </section>
+                <section class="eval-document" data-eval-doc="lamp-l-dpl">
+                  <div class="eval-head">
+                    <h3>Penilaian Dosen Pembimbing Lapangan (DPL)</h3>
+                    <a class="btn-link soft" data-eval-link href="#" target="_blank" rel="noopener" hidden><svg
+                        class="ic">
+                        <use href="#i-link" />
+                      </svg>Buka di tab baru</a>
+                  </div>
+                  <div class="eval-frame">
+                    <iframe title="Pratinjau dokumen penilaian DPL" loading="lazy" allow="fullscreen" allowfullscreen
+                      referrerpolicy="strict-origin-when-cross-origin"
+                      sandbox="allow-scripts allow-same-origin allow-popups allow-presentation" data-eval-frame
+                      hidden></iframe>
+                    <div class="eval-empty" data-eval-empty><b>Dokumen penilaian DPL belum ditautkan</b><span>Isi tautan
+                        pada kartu Lampiran Penilaian DPL.</span></div>
+                  </div>
+                </section>
               </div>
             </div>
 
@@ -4030,6 +4267,29 @@
     </div>
   </section>
 
+  <!-- KARYA INOVASI PEMBELAJARAN -->
+  <section class="sec alt" id="inovasi" data-nav>
+    <div class="sec-in">
+      <div class="sec-head">
+        <p class="sec-tag"><span class="tg"><svg class="ic">
+              <use href="#i-code" />
+            </svg></span>Karya Inovasi Pembelajaran</p>
+        <h2 class="sec-h">NetLab <em>interaktif</em></h2>
+        <p class="sec-desc">Media belajar interaktif untuk mengenal dasar jaringan komputer, menguji topologi,
+          mempelajari alamat IP, menelusuri perjalanan paket TCP/IP, dan mengerjakan kuis melalui lima misi.</p>
+      </div>
+      <div class="innovation-frame">
+        <iframe src="https://hafidz18.github.io/inovasi-netlab/" title="NetLab interaktif: belajar jaringan komputer"
+          loading="lazy" allow="fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"
+          sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+      </div>
+      <a class="btn-link innovation-open" href="https://hafidz18.github.io/inovasi-netlab/" target="_blank"
+        rel="noopener"><svg class="ic">
+          <use href="#i-link" />
+        </svg>Buka NetLab di tab baru</a>
+    </div>
+  </section>
+
   <!-- LAMPIRAN DOKUMEN -->
   <!-- CARA ISI: tempel tautan Google Drive, Docs, Slides, atau YouTube pada atribut data-doc="" di tiap kartu.
      Tautan Drive harus dibagikan sebagai "Siapa saja yang memiliki link" agar pratinjau tampil. -->
@@ -4065,22 +4325,8 @@
           </div>
         </article>
 
-        <article class="card lamp lift" id="lamp-b" data-group="p1" data-title="Materi pembelajaran" data-doc="">
-          <div class="paper" aria-hidden="true"><span class="ftype" data-t="doc">DOC</span></div>
-          <div class="lamp-body"><span class="lab"><svg class="ic">
-                <use href="#i-layers" />
-              </svg>E-Portfolio 1 · B</span>
-            <h3>Materi pembelajaran</h3>
-            <p>Materi yang disusun dan diterapkan saat praktik.</p><span class="empty-chip">Tautan belum diisi</span>
-            <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-b"><svg class="ic">
-                  <use href="#i-eye" />
-                </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-b"><svg class="ic">
-                  <use href="#i-link" />
-                </svg>Buka tautan</a></div>
-          </div>
-        </article>
-
-        <article class="card lamp lift" id="lamp-c" data-group="p1" data-title="Media pembelajaran" data-doc="">
+        <article class="card lamp lift" id="lamp-c" data-group="p1" data-title="Media pembelajaran"
+          data-doc="https://drive.google.com/file/d/1qLNv52AXJ081t23jKsvEXL8uVjJ8HJ8v/view?usp=sharing">
           <div class="paper" aria-hidden="true"><span class="ftype" data-t="slide">SLIDE</span></div>
           <div class="lamp-body"><span class="lab"><svg class="ic">
                 <use href="#i-screen" />
@@ -4096,7 +4342,8 @@
           </div>
         </article>
 
-        <article class="card lamp lift" id="lamp-d" data-group="p1" data-title="Video pelaksanaan siklus 1" data-doc="">
+        <article class="card lamp lift" id="lamp-d" data-group="p1" data-title="Video pelaksanaan siklus 1"
+          data-doc="https://youtu.be/wQ7UiZdUoVA">
           <div class="paper" aria-hidden="true"><span class="ftype" data-t="video">VIDEO</span></div>
           <div class="lamp-body"><span class="lab"><svg class="ic">
                 <use href="#i-video" />
@@ -4129,57 +4376,42 @@
           </div>
         </article>
 
-        <article class="card lamp lift" id="lamp-f" data-group="p1" data-title="Instrumen penilaian" data-doc="">
-          <div class="paper" aria-hidden="true"><span class="ftype" data-t="doc">DOC</span></div>
-          <div class="lamp-body"><span class="lab"><svg class="ic">
-                <use href="#i-filecheck" />
-              </svg>E-Portfolio 1 · F</span>
-            <h3>Instrumen penilaian</h3>
-            <p>Instrumen yang dirancang beserta rubrik atau kunci penilaiannya.</p><span class="empty-chip">Tautan belum
-              diisi</span>
-            <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-f"><svg class="ic">
-                  <use href="#i-eye" />
-                </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-f"><svg class="ic">
-                  <use href="#i-link" />
-                </svg>Buka tautan</a></div>
-          </div>
-        </article>
-
-        <article class="card lamp lift" id="lamp-g" data-group="p1" data-title="Contoh hasil kerja siswa" data-doc="">
-          <div class="paper" aria-hidden="true"><span class="ftype" data-t="pdf">PDF</span></div>
-          <div class="lamp-body"><span class="lab"><svg class="ic">
-                <use href="#i-pencil" />
-              </svg>E-Portfolio 1 · G</span>
-            <h3>Contoh hasil kerja siswa</h3>
-            <p>Hasil kerja siswa yang dipilih, dengan nama siswa disamarkan.</p><span class="empty-chip">Tautan belum
-              diisi</span>
-            <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-g"><svg class="ic">
-                  <use href="#i-eye" />
-                </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-g"><svg class="ic">
-                  <use href="#i-link" />
-                </svg>Buka tautan</a></div>
-          </div>
-        </article>
-
-        <article class="card lamp lift" id="lamp-h" data-group="p1" data-title="Penilaian guru pamong dan DPL"
-          data-doc="">
+        <article class="card lamp lift" id="lamp-h-gp" data-group="p1" data-title="Penilaian Guru Pamong (GP)"
+          data-doc="https://drive.google.com/file/d/18rND-rALVmmvQ4w-rxdzqkbwFfvHTdMA/view?usp=sharing">
           <div class="paper" aria-hidden="true"><span class="ftype" data-t="pdf">PDF</span></div>
           <div class="lamp-body"><span class="lab"><svg class="ic">
                 <use href="#i-award" />
               </svg>E-Portfolio 1 · H</span>
-            <h3>Penilaian GP dan DPL</h3>
-            <p>Lembar penilaian atau observasi dari guru pamong dan DPL.</p><span class="empty-chip">Tautan belum
-              diisi</span>
-            <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-h"><svg class="ic">
+            <h3>Penilaian Guru Pamong (GP)</h3>
+            <p>Dokumen penilaian dan observasi dari guru pamong.</p><span class="empty-chip">Tautan belum diisi</span>
+            <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-h-gp"><svg class="ic">
                   <use href="#i-eye" />
-                </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-h"><svg class="ic">
+                </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-h-gp"><svg class="ic">
+                  <use href="#i-link" />
+                </svg>Buka tautan</a></div>
+          </div>
+        </article>
+
+        <article class="card lamp lift" id="lamp-h-dpl" data-group="p1"
+          data-title="Penilaian Dosen Pembimbing Lapangan (DPL)" data-doc="">
+          <div class="paper" aria-hidden="true"><span class="ftype" data-t="pdf">PDF</span></div>
+          <div class="lamp-body"><span class="lab"><svg class="ic">
+                <use href="#i-award" />
+              </svg>E-Portfolio 1 · I</span>
+            <h3>Penilaian DPL</h3>
+            <p>Dokumen penilaian dan observasi dari dosen pembimbing lapangan.</p><span class="empty-chip">Tautan belum
+              diisi</span>
+            <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-h-dpl"><svg class="ic">
+                  <use href="#i-eye" />
+                </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-h-dpl"><svg class="ic">
                   <use href="#i-link" />
                 </svg>Buka tautan</a></div>
           </div>
         </article>
 
         <article class="card lamp lift" id="lamp-i" data-group="p2"
-          data-title="Modul ajar siklus terbaik (siklus 2 sampai 4)" data-doc="">
+          data-title="Modul ajar siklus terbaik (siklus 2 sampai 4)"
+          data-doc="https://drive.google.com/file/d/1ioH6CSlZzmA7Y4S9NyNbJMi48ljUpv7b/view?usp=sharing">
           <div class="paper" aria-hidden="true"><span class="ftype" data-t="doc">DOC</span></div>
           <div class="lamp-body"><span class="lab"><svg class="ic">
                 <use href="#i-clip" />
@@ -4195,7 +4427,7 @@
         </article>
 
         <article class="card lamp lift" id="lamp-j" data-group="p2" data-title="Video pelaksanaan siklus terbaik"
-          data-doc="">
+          data-doc="https://youtu.be/wQ7UiZdUoVA">
           <div class="paper" aria-hidden="true"><span class="ftype" data-t="video">VIDEO</span></div>
           <div class="lamp-body"><span class="lab"><svg class="ic">
                 <use href="#i-video" />
@@ -4205,6 +4437,56 @@
             <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-j"><svg class="ic">
                   <use href="#i-eye" />
                 </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-j"><svg class="ic">
+                  <use href="#i-link" />
+                </svg>Buka tautan</a></div>
+          </div>
+        </article>
+
+        <article class="card lamp lift" id="lamp-k" data-group="p2" data-title="Media rancangan terbaik siklus 4"
+          data-doc="https://drive.google.com/file/d/1rvJU3Z3qqOmOy0IsC3g7no-seISOwOgq/view?usp=sharing">
+          <div class="paper" aria-hidden="true"><span class="ftype" data-t="slide">SLIDE</span></div>
+          <div class="lamp-body"><span class="lab"><svg class="ic">
+                <use href="#i-screen" />
+              </svg>E-Portfolio 2 · K</span>
+            <h3>Media rancangan terbaik · Siklus 4</h3>
+            <p>Media yang digunakan dalam rancangan terbaik untuk membuat dan mempresentasikan pesan edukasi digital.
+            </p><span class="empty-chip">Tautan belum diisi</span>
+            <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-k"><svg class="ic">
+                  <use href="#i-eye" />
+                </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-k"><svg class="ic">
+                  <use href="#i-link" />
+                </svg>Buka tautan</a></div>
+          </div>
+        </article>
+
+        <article class="card lamp lift" id="lamp-l-gp" data-group="p2" data-title="Penilaian Guru Pamong (GP)"
+          data-doc="https://drive.google.com/file/d/18rND-rALVmmvQ4w-rxdzqkbwFfvHTdMA/view?usp=sharing">
+          <div class="paper" aria-hidden="true"><span class="ftype" data-t="pdf">PDF</span></div>
+          <div class="lamp-body"><span class="lab"><svg class="ic">
+                <use href="#i-award" />
+              </svg>E-Portfolio 2 · L</span>
+            <h3>Penilaian Guru Pamong (GP)</h3>
+            <p>Dokumen penilaian dan observasi dari guru pamong.</p><span class="empty-chip">Tautan belum diisi</span>
+            <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-l-gp"><svg class="ic">
+                  <use href="#i-eye" />
+                </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-l-gp"><svg class="ic">
+                  <use href="#i-link" />
+                </svg>Buka tautan</a></div>
+          </div>
+        </article>
+
+        <article class="card lamp lift" id="lamp-l-dpl" data-group="p2"
+          data-title="Penilaian Dosen Pembimbing Lapangan (DPL)" data-doc="">
+          <div class="paper" aria-hidden="true"><span class="ftype" data-t="pdf">PDF</span></div>
+          <div class="lamp-body"><span class="lab"><svg class="ic">
+                <use href="#i-award" />
+              </svg>E-Portfolio 2 · M</span>
+            <h3>Penilaian DPL</h3>
+            <p>Dokumen penilaian dan observasi dari dosen pembimbing lapangan.</p><span class="empty-chip">Tautan belum
+              diisi</span>
+            <div class="btns"><button class="btn-link" type="button" data-lamp="lamp-l-dpl"><svg class="ic">
+                  <use href="#i-eye" />
+                </svg>Pratinjau</button><a class="btn-link soft" href="#" data-lamp-link="lamp-l-dpl"><svg class="ic">
                   <use href="#i-link" />
                 </svg>Buka tautan</a></div>
           </div>
@@ -4262,6 +4544,7 @@
           <li><a href="#porto1">E-Portfolio 1</a></li>
           <li><a href="#porto2">E-Portfolio 2</a></li>
           <li><a href="#refleksi">Refleksi</a></li>
+          <li><a href="#inovasi">Karya Inovasi</a></li>
           <li><a href="#lampiran">Lampiran</a></li>
           <li><a href="#kontak">Kontak</a></li>
         </ul>
@@ -4356,6 +4639,31 @@
         });
       });
 
+      /* Carousel dokumentasi nonmengajar */
+      [].forEach.call(document.querySelectorAll('[data-carousel]'), function (carousel) {
+        var slides = [].slice.call(carousel.querySelectorAll('.nm-slide'));
+        var dots = [].slice.call(carousel.querySelectorAll('.nm-dot'));
+        var index = 0;
+        function showSlide(next) {
+          index = (next + slides.length) % slides.length;
+          slides.forEach(function (slide, i) { slide.hidden = i !== index; });
+          dots.forEach(function (dot, i) {
+            var active = i === index;
+            dot.setAttribute('aria-selected', active);
+            dot.tabIndex = active ? 0 : -1;
+          });
+        }
+        carousel.querySelector('[data-carousel-prev]').addEventListener('click', function () {
+          showSlide(index - 1);
+        });
+        carousel.querySelector('[data-carousel-next]').addEventListener('click', function () {
+          showSlide(index + 1);
+        });
+        dots.forEach(function (dot, i) {
+          dot.addEventListener('click', function () { showSlide(i); });
+        });
+      });
+
       /* Pita akordion */
       function setBand(w, open) {
         var b = w.querySelector('.band'), body = w.querySelector('.band-body');
@@ -4417,7 +4725,16 @@
       });
 
       /* Lampiran: tautan, status, dan filter */
-      function docOf(id) { var el = document.getElementById(id); return el ? (el.getAttribute('data-doc') || '').trim() : ''; }
+      function docOf(id) {
+        var el = document.getElementById(id);
+        if (!el) return '';
+        var url = (el.getAttribute('data-doc') || '').trim();
+        if (url) return url;
+        var link = document.querySelector('[data-lamp-link="' + id + '"]');
+        url = link ? (link.getAttribute('href') || '').trim() : '';
+        if (isHttps(url)) el.setAttribute('data-doc', url);
+        return isHttps(url) ? url : '';
+      }
       function isHttps(u) { return /^https:\/\//i.test(u); }
       [].forEach.call(document.querySelectorAll('[data-lamp-link]'), function (a) {
         var u = docOf(a.getAttribute('data-lamp-link'));
@@ -4439,11 +4756,47 @@
       function toEmbed(u) {
         var m;
         if (!isHttps(u)) return '';
-        if ((m = u.match(/^https:\/\/drive\.google\.com\/file\/d\/([\w-]+)/))) return 'https://drive.google.com/file/d/' + m[1] + '/preview';
+        if ((m = u.match(/^https:\/\/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?id=)([\w-]+)/))) return 'https://drive.google.com/file/d/' + m[1] + '/preview';
         if ((m = u.match(/^https:\/\/docs\.google\.com\/(document|presentation|spreadsheets)\/d\/([\w-]+)/))) return 'https://docs.google.com/' + m[1] + '/d/' + m[2] + '/preview';
         if ((m = u.match(/^https:\/\/(?:youtu\.be\/|(?:www\.)?youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/))([\w-]{11})/))) return 'https://www.youtube.com/embed/' + m[1];
-        return '';
+        return u;
       }
+      [].forEach.call(document.querySelectorAll('[data-eval-doc]'), function (preview) {
+        var id = preview.getAttribute('data-eval-doc');
+        var url = docOf(id), embed = toEmbed(url);
+        if (!isHttps(url)) return;
+        var frame = preview.querySelector('[data-eval-frame]');
+        var empty = preview.querySelector('[data-eval-empty]');
+        var link = preview.querySelector('[data-eval-link]');
+        if (link) { link.href = url; link.hidden = false; }
+        if (frame && embed) { frame.src = embed; frame.hidden = false; }
+        if (empty) empty.hidden = !!embed;
+      });
+      [].forEach.call(document.querySelectorAll('.panel'), function (panel) {
+        var trigger = panel.querySelector('.docchip [data-lamp]');
+        if (!trigger) return;
+        var id = trigger.getAttribute('data-lamp'), url = docOf(id), embed = toEmbed(url);
+        var photo = panel.querySelector('.side .ph');
+        if (!embed || !photo) return;
+        var doc = document.getElementById(id), holder = document.createElement('div');
+        var frame = document.createElement('iframe');
+        holder.className = 'doc-embed';
+        frame.title = (doc && doc.getAttribute('data-title') || 'Pratinjau dokumen') + ' - pratinjau tertanam';
+        frame.src = embed;
+        frame.loading = 'lazy';
+        frame.allow = 'fullscreen; picture-in-picture; encrypted-media';
+        frame.setAttribute('allowfullscreen', '');
+        frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+        frame.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-popups allow-presentation');
+        holder.appendChild(frame);
+        photo.appendChild(holder);
+        photo.classList.add('has', 'has-embed');
+        photo.removeAttribute('tabindex');
+        photo.removeAttribute('role');
+        var video = photo.closest('.vid');
+        if (video) video.classList.add('has-embed');
+      });
+
       var viewer = document.getElementById('viewer'), vFrame = document.getElementById('vFrame'), vEmpty = document.getElementById('vEmpty');
       var vTitle = document.getElementById('vTitle'), vOpen = document.getElementById('vOpen'), vClose = document.getElementById('vClose');
       var vET = document.getElementById('vEmptyT'), vED = document.getElementById('vEmptyD'), lastFocus = null;
